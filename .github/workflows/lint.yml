@@ -1,0 +1,103 @@
+name: CogniDoc Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+      - 'tools/**'
+      - 'specs/**'
+      - 'templates/**'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - 'tools/**'
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: |
+            **/*.md
+            !**/node_modules/**
+          config: |
+            {
+              "MD013": false,
+              "MD033": false,
+              "MD041": false,
+              "MD024": { "siblings_only": true }
+            }
+
+  beacon-validation:
+    name: Beacon Syntax Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate beacons in specs
+        run: ./tools/validate-beacons.sh specs/ --strict
+
+      - name: Validate beacons in examples
+        run: ./tools/validate-beacons.sh examples/
+
+  template-check:
+    name: Template Integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify templates exist
+        run: |
+          files=(
+            "bootloader/COGNIDOC.md.template"
+            "templates/MEMORY.md.template"
+            "templates/SIGNAL_REGISTRY.md.template"
+            "templates/missions/_template.md"
+            "templates/handshakes/_template.md"
+          )
+          missing=0
+          for f in "${files[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              missing=$((missing + 1))
+            else
+              echo "OK: $f"
+            fi
+          done
+          if [ $missing -gt 0 ]; then
+            echo "ERROR: $missing template(s) missing"
+            exit 1
+          fi
+          echo "All templates present."
+
+      - name: Verify specs exist
+        run: |
+          files=(
+            "specs/SBS-v1.0.md"
+            "specs/PSS-v1.0.md"
+            "specs/CPA-v1.0.md"
+            "specs/CLASSIFICATION.md"
+          )
+          for f in "${files[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              exit 1
+            fi
+          done
+          echo "All specs present."
+
+      - name: Verify tooling is executable
+        run: |
+          for f in tools/*.sh; do
+            if [ ! -x "$f" ]; then
+              echo "NOT EXECUTABLE: $f"
+              exit 1
+            fi
+          done
+          echo "All tools executable."
