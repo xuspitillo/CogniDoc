@@ -22,17 +22,6 @@ jobs:
 
       - name: Lint markdown files
         uses: DavidAnson/markdownlint-cli2-action@v19
-        with:
-          globs: |
-            **/*.md
-            !**/node_modules/**
-          config: |
-            {
-              "MD013": false,
-              "MD033": false,
-              "MD041": false,
-              "MD024": { "siblings_only": true }
-            }
 
   beacon-validation:
     name: Beacon Syntax Validation
