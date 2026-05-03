@@ -11,7 +11,7 @@
 ### Option A: Using the init script
 
 ```bash
-git clone https://github.com/cognidoc-project/cognidoc.git /tmp/cognidoc
+git clone https://github.com/xuspitillo/CogniDoc.git /tmp/cognidoc
 /tmp/cognidoc/tools/init.sh ~/my-project "My Project"
 ```
 
@@ -55,7 +55,7 @@ These tools auto-read a markdown file from your project root at session start. M
 
 | Tool | Expected filename | What to do |
 |------|-------------------|------------|
-| Claude Code | `CLAUDE.md` | Rename `COGNIDOC.md` to `CLAUDE.md`, or symlink: `ln -s COGNIDOC.md CLAUDE.md` |
+| Claude Code | `CLAUDE.md` | Create a symlink: `ln -s COGNIDOC.md CLAUDE.md` — Claude Code auto-reads files named `CLAUDE.md` |
 | Cursor | `.cursorrules` or project docs | Copy `COGNIDOC.md` content into your Cursor rules, or add it via Cursor's project docs feature |
 | Windsurf | `.windsurfrules` | Copy `COGNIDOC.md` content into `.windsurfrules` |
 | Cline | Auto-reads project files | Ensure `COGNIDOC.md` is in the project root; Cline will find it when prompted |

@@ -55,8 +55,8 @@ See `docs/getting-started.md` for setup instructions per LLM type.
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/cognidoc-project/cognidoc.git
-cd cognidoc
+git clone https://github.com/xuspitillo/CogniDoc.git
+cd CogniDoc
 
 # 2. Initialize a new project from the templates
 ./tools/init.sh ~/my-project "My Project Name"
@@ -111,7 +111,7 @@ The CogniDoc protocol specifications, templates, and tooling in this repository 
 
 ## Status
 
-**Version:** 0.1.0 — Public Alpha
+**Version:** 0.1.1 — Public Alpha
 **Stability:** Specifications are stable. Templates and tooling may evolve based on early adopter feedback.
 **Origin:** CogniDoc was developed and validated internally at LIGHT Corp before being extracted for public release.
 

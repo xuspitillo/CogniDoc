@@ -194,7 +194,7 @@
 ---
 
 <!-- FOOTER [*(COG.W1.DEF>S1)*] -->
-<!-- Keep these counters updated via ROP propagation on every commit. -->
+<!-- Keep these counters updated on every commit. -->
 
 **{{PROJECT_NAME}}** | v{{VERSION}} | Memory updated: {{DATE}}
 Missions: 0 total (0 ROOT, 0 BRANCH, 0 SATELLITE, 0 NOTE) | Signals: 0 | Handshakes: 0

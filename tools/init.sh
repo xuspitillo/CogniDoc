@@ -51,7 +51,7 @@ sed \
 echo "[2/5] Creating project memory (MEMORY.md)..."
 sed \
     -e "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" \
-    -e "s/{{VERSION}}/0.1.0/g" \
+    -e "s/{{VERSION}}/0.1.1/g" \
     -e "s/{{DATE}}/$DATE_TODAY/g" \
     -e "s/{{OWNER}}/$PROJECT_NAME team/g" \
     -e "s|{{PROJECT_ROOT}}|.|g" \
@@ -93,4 +93,4 @@ echo "  2. Fill in MEMORY.md sections 1, 2, and 4 with your project info"
 echo "  3. Feed COGNIDOC.md to your LLM (see docs/getting-started.md for your LLM type)"
 echo "  4. Try: 'access memory' to verify the LLM loaded your context"
 echo ""
-echo "Docs: https://github.com/cognidoc-project/cognidoc/docs/getting-started.md"
+echo "Docs: https://github.com/xuspitillo/CogniDoc/blob/main/docs/getting-started.md"

@@ -36,9 +36,9 @@ research-notes/
   SIGNAL_REGISTRY.md     -- State tracking for all research threads
   missions/
     mis-001-lit-review-memory.md   -- Literature review on agent memory systems
-    mis-002-comparison-framework.md (planned)
-    mis-003-experiment-reproduction.md (planned)
 ```
+
+> **Note:** This example ships with one fully detailed mission file (`mis-001-lit-review-memory.md`). The additional missions referenced in `MEMORY.md` and `SIGNAL_REGISTRY.md` (mis-002 comparison-framework, mis-003 experiment-reproduction) are intentionally left as catalog-only entries to demonstrate how a real research project's memory grows over time -- you can see how research threads are tracked through the catalog and signal registry without needing every detail file to be present.
 
 ## How to Use
 

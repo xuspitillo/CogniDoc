@@ -114,10 +114,10 @@ BOOTLOADER=""
 if [[ -f "$PROJECT_DIR/COGNIDOC.md" ]]; then
     BOOTLOADER="$PROJECT_DIR/COGNIDOC.md"
 elif [[ -f "$PROJECT_DIR/CLAUDE.md" ]]; then
-    # Support legacy name
+    # Support Claude Code integration (auto-reads CLAUDE.md)
     BOOTLOADER="$PROJECT_DIR/CLAUDE.md"
 else
-    echo "ERROR: No bootloader found. Expected COGNIDOC.md (or CLAUDE.md) in $PROJECT_DIR" >&2
+    echo "ERROR: No bootloader found. Expected COGNIDOC.md in $PROJECT_DIR" >&2
     exit 1
 fi
 

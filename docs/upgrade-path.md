@@ -22,7 +22,7 @@ Who it's for: Individual developers or small teams who want programmatic validat
 
 What it adds:
 
-- **Full Python library (7 modules)**: adds mission parser, ROP validator, mission classifier, and CPA planner. Complete programmatic toolkit for cognitive document management.
+- **Full Python library (7 modules)**: adds mission parser, propagation validator, mission classifier, and CPA planner. Complete programmatic toolkit for cognitive document management.
 - **Assisted onboarding**: expert configuration of CogniDoc for your specific project and domain.
 - **Cross-document audit**: programmatic verification that all documents are coherent with each other and with reality.
 - **Configurable cognitive interface**: conversational widget adapted to your domain and workflow.
@@ -79,7 +79,7 @@ Who it's for: Organizations where the cost of error is high and the value of spe
 ## How to upgrade
 
 - **T1** is always available in this repository (open source, Apache 2.0).
-- **T2+**: contact the CogniDoc team at `[placeholder email/URL]`.
+- **T2+**: visit the [CogniDoc repository](https://github.com/xuspitillo/CogniDoc) for updates on T2+ availability.
 - All tiers are backward-compatible: your existing `COGNIDOC.md`, `MEMORY.md`, and mission files work unchanged.
 
 ## FAQ

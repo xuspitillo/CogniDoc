@@ -24,6 +24,8 @@ to capture, organize, and synthesize knowledge from books, articles, papers, and
 | `SIGNAL_REGISTRY.md` | State tracking for missions and research threads |
 | `missions/mis-001-reading-backlog.md` | Example mission: organizing a reading backlog |
 
+> **Note:** This example ships with one fully detailed mission file (`mis-001-reading-backlog.md`). The additional missions referenced in `MEMORY.md` and `SIGNAL_REGISTRY.md` (mis-002 ai-agents-synthesis, mis-003 conference-notes) are intentionally left as catalog-only entries to demonstrate how a personal knowledge project's memory grows over time -- you can see how missions are tracked through the catalog and signal registry without needing every detail file to be present.
+
 ## How to try it
 
 1. Copy this directory into your own repository.

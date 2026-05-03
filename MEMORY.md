@@ -50,10 +50,10 @@ Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) tha
 
 | Metric | Value |
 |--------|-------|
-| Version | 0.1.0 |
+| Version | 0.1.1 |
 | Stage | Public Alpha |
 | Release date | 2026-05-02 |
-| Total tracked files | 41 |
+| Total tracked files | 47 |
 | Protocol specs | 4 (SBS, PSS, CPA, Classification) |
 | Concept docs | 6 |
 | Reference examples | 3 |
@@ -144,8 +144,8 @@ Detailed status lives in each mission file under `missions/`.
 ---
 
 **Footer**
-Version: 0.1.0 — Public Alpha
+Version: 0.1.1 — Public Alpha
 Last updated: 2026-05-02
 Total missions: 3 (3 active, 0 completed)
 Total signals: 3 (2 ACTIVE, 1 WAITING, 0 PAUSED, 0 COMPLETED)
-Total tracked files: 41
+Total tracked files: 47
