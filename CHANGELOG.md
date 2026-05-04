@@ -23,11 +23,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 
 - **Version bump 0.1.1 → 0.2.0**: minor-version event per semver because a new foundational protocol was added. Backward-compatible: v0.1.x adopters can upgrade by copying `HANDSHAKES.md` from the new template and adopting the bootloader's PHS section without rewriting existing memory or missions.
-- **MEMORY.md (dogfooded)** — version bumped, S4 metrics refreshed (5 specs instead of 4, 3 tools instead of 2), three new architectural decisions logged (D5-D7), history row added for v0.2.0.
+- **Repository scope clarified**: the CogniDoc repo defines and ships the protocol; it does **not** apply the protocol to itself. All root-level dogfooding (`MEMORY.md`, `SIGNAL_REGISTRY.md`, `missions/`) has been removed. The repository is now strictly the deliverable that adopters consume — protocol specs, templates, examples, tooling, and documentation. Information that previously lived in the dogfooded `MEMORY.md` decisions log lives in the protocol specs themselves and in this CHANGELOG; ongoing project planning lives in GitHub issues, not in repo files.
 
 ### Notes on scope
 
-PHS applies to the projects that adopt CogniDoc. The CogniDoc repository itself does **not** apply PHS to its own commits — this repository establishes the protocol but does not run it. Adopters get a working `HANDSHAKES.md` and `handshakes/` directory in their projects via `init.sh`; the example under `examples/software-project/` demonstrates a real handshake.
+CogniDoc applies to the projects that adopt it. The CogniDoc repository itself does **not** apply CogniDoc to its own commits, missions, signals, or handshakes — this repository is the source of the protocol, not a CogniDoc-managed project. Adopters get a working `MEMORY.md`, `SIGNAL_REGISTRY.md`, `HANDSHAKES.md`, `missions/`, and `handshakes/` in their projects via `init.sh`; the example under `examples/software-project/` demonstrates a complete adopter setup including a real handshake.
 
 ## [0.1.1] — 2026-05-03
 
