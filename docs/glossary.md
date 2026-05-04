@@ -24,7 +24,16 @@ The semantic area a beacon belongs to (e.g., `ARC` = Architecture, `SEC` = Secur
 A PSS state indicating a new signal derived from a completed one. The original signal stays immutable with a forward pointer; the evolution continues the work as a peer-level entry.
 
 ## Handshake
-A narrative checkpoint document that captures the complete project state at a point in time. Handshakes form an immutable chronological chain stored in `workspace/generated/`. Each handshake covers all changes since the previous one.
+An immutable, chronological narrative checkpoint of the project's state. One handshake is generated **before every commit that changes project content**. Each handshake is self-contained: an LLM that reads only the latest handshake can identify the project, understand its state, and continue work coherently. Handshakes are stored in `handshakes/` at the project root with filenames `hs-NNN-YYYY-MM-DD-slug.md`. The full protocol is in `specs/PHS-v1.0.md`.
+
+## HANDSHAKES.md
+The handshake index file at the project root. Mirrors the role of `SIGNAL_REGISTRY.md` for handshakes: a Quick Index table of every handshake (HS-NNN, date, title, optional commit hash) plus the protocol invariants. Updated atomically with every handshake generation, before the commit. See `specs/PHS-v1.0.md` and the `Handshakes: N (latest: HS-N)` counter in `MEMORY.md` footer.
+
+## HS-NNN
+A handshake identifier. `HS` is the literal uppercase prefix; `NNN` is a sequential, zero-padded three-digit counter that is never reused. Filenames use the lowercase form: `hs-NNN-YYYY-MM-DD-slug.md`.
+
+## PHS
+Project Handshake System. The protocol governing handshake generation: format, immutability, pre-commit trigger, propagation cascade, chain continuity. One of the four foundational CogniDoc protocols (alongside SBS, PSS, CPA). See `specs/PHS-v1.0.md`.
 
 ## MEMORY.md
 The project's general memory file. Contains 10 sections covering identity, stack, architecture, current state, history, decisions, lessons learned, roadmap (P1-P2), and catalog (all missions).

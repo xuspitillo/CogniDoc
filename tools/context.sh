@@ -123,7 +123,9 @@ fi
 
 MEMORY_FILE="$PROJECT_DIR/MEMORY.md"
 SIGNAL_FILE="$PROJECT_DIR/SIGNAL_REGISTRY.md"
+HANDSHAKES_FILE="$PROJECT_DIR/HANDSHAKES.md"
 MISSIONS_DIR="$PROJECT_DIR/missions"
+HANDSHAKES_DIR="$PROJECT_DIR/handshakes"
 
 # --- Build output ---
 
@@ -140,7 +142,9 @@ The context below contains:
 1. **Bootloader** — the protocol that governs how you operate on this project
 2. **Project Memory** — the living state of the project
 3. **Signal Registry** — the state tracker for missions and processes
-4. **Mission Files** — individual mission details (if included)
+4. **Handshakes Index** — chronological narrative checkpoints (one per commit)
+5. **Mission Files** — individual mission details (if included)
+6. **Recent Handshakes** — the 3 most recent narrative checkpoints (full content)
 
 Each section is delimited with clear markers. Process them in order.
 
@@ -188,8 +192,23 @@ HEADER
     echo ""
     echo "<!-- ====== END SIGNAL REGISTRY ====== -->"
     echo ""
+    echo "---"
+    echo ""
 
-    # Section 4: Mission files
+    # Section 4: Handshakes index
+    echo "<!-- ====== SECTION 4: HANDSHAKES INDEX (HANDSHAKES.md) ====== -->"
+    echo ""
+    if [[ -f "$HANDSHAKES_FILE" ]]; then
+        cat "$HANDSHAKES_FILE"
+    else
+        echo "*HANDSHAKES.md not found — handshake index has not been initialized yet.*"
+    fi
+    echo ""
+    echo ""
+    echo "<!-- ====== END HANDSHAKES INDEX ====== -->"
+    echo ""
+
+    # Section 5: Mission files
     if [[ "$INCLUDE_MISSIONS" == true ]] && [[ -d "$MISSIONS_DIR" ]]; then
         # Find mission files (*.md), excluding the template
         mapfile -t mission_files < <(
@@ -199,7 +218,7 @@ HEADER
         if [[ ${#mission_files[@]} -gt 0 ]]; then
             echo "---"
             echo ""
-            echo "<!-- ====== SECTION 4: MISSION FILES ====== -->"
+            echo "<!-- ====== SECTION 5: MISSION FILES ====== -->"
             echo ""
 
             for mfile in "${mission_files[@]}"; do
@@ -224,6 +243,34 @@ HEADER
             done
 
             echo "<!-- ====== END MISSION FILES ====== -->"
+            echo ""
+        fi
+    fi
+
+    # Section 6: Handshake files (latest 3 by default for context budget)
+    if [[ -d "$HANDSHAKES_DIR" ]]; then
+        mapfile -t handshake_files < <(
+            find "$HANDSHAKES_DIR" -name "hs-*.md" -type f ! -name "_template.md" 2>/dev/null | sort | tail -3
+        )
+
+        if [[ ${#handshake_files[@]} -gt 0 ]]; then
+            echo "---"
+            echo ""
+            echo "<!-- ====== SECTION 6: RECENT HANDSHAKES (last 3) ====== -->"
+            echo ""
+
+            for hfile in "${handshake_files[@]}"; do
+                rel_path="${hfile#"$PROJECT_DIR"/}"
+                echo "<!-- ------ Handshake: $rel_path ------ -->"
+                echo ""
+                cat "$hfile"
+                echo ""
+                echo ""
+                echo "<!-- ------ End: $rel_path ------ -->"
+                echo ""
+            done
+
+            echo "<!-- ====== END HANDSHAKES ====== -->"
             echo ""
         fi
     fi

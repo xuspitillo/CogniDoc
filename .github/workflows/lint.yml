@@ -33,11 +33,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate beacons in specs
-        run: ./tools/validate-beacons.sh specs/ --strict
-
-      - name: Validate beacons in examples
-        run: ./tools/validate-beacons.sh examples/
+      - name: Validate beacons across the repository (templates, examples, dogfooded files)
+        run: ./tools/validate-beacons.sh . --strict
 
   template-check:
     name: Template Integrity
@@ -51,6 +48,7 @@ jobs:
             "bootloader/COGNIDOC.md.template"
             "templates/MEMORY.md.template"
             "templates/SIGNAL_REGISTRY.md.template"
+            "templates/HANDSHAKES.md.template"
             "templates/missions/_template.md"
             "templates/handshakes/_template.md"
           )
@@ -76,6 +74,7 @@ jobs:
             "specs/PSS-v1.0.md"
             "specs/CPA-v1.0.md"
             "specs/CLASSIFICATION.md"
+            "specs/PHS-v1.0.md"
           )
           for f in "${files[@]}"; do
             if [ ! -f "$f" ]; then
@@ -84,6 +83,21 @@ jobs:
             fi
           done
           echo "All specs present."
+
+      - name: Verify root-level cognitive files exist
+        run: |
+          files=(
+            "MEMORY.md"
+            "SIGNAL_REGISTRY.md"
+            "HANDSHAKES.md"
+          )
+          for f in "${files[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              exit 1
+            fi
+          done
+          echo "All cognitive root files present."
 
       - name: Verify tooling is executable
         run: |

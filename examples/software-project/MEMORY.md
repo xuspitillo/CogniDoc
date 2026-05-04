@@ -81,4 +81,4 @@ mission-based workflow tracked through CogniDoc cognitive memory.
 
 ---
 
-> Footer: v0.3.0 | 12 endpoints | 45 tests | 18 source files | ~2,400 LOC | 4 missions (1 active, 1 waiting, 1 paused, 1 completed)
+> Footer: v0.3.0 | 12 endpoints | 45 tests | 18 source files | ~2,400 LOC | 4 missions (1 active, 1 waiting, 1 paused, 1 completed) | Handshakes: 1 (latest: HS-001)

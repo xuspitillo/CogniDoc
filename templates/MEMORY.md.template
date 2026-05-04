@@ -193,6 +193,8 @@
 
 <!-- FOOTER [*(COG.W1.DEF>S1)*] -->
 <!-- Keep these counters updated on every commit. -->
+<!-- The "Handshakes" counter MUST be incremented as part of the PHS pre-commit cascade,
+     before the developer commits. See specs/PHS-v1.0.md. -->
 
 **{{PROJECT_NAME}}** | v{{VERSION}} | Memory updated: {{DATE}}
-Missions: 0 total (0 ROOT, 0 BRANCH, 0 SATELLITE, 0 NOTE) | Signals: 0 | Handshakes: 0
+Missions: 0 total (0 ROOT, 0 BRANCH, 0 SATELLITE, 0 NOTE) | Signals: 0 | Handshakes: 0 (latest: —)

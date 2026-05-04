@@ -37,12 +37,12 @@ No runtime dependencies. No package manager required. The entire system is plain
 
 CogniDoc T1 is composed of four pillars:
 
-1. **Protocol specifications** (`specs/`) — the formal definitions of SBS, PSS, CPA, and the Classification system
-2. **Templates** (`templates/`) — ready-to-fill skeletons for MEMORY, SIGNAL_REGISTRY, missions, and handshakes
+1. **Protocol specifications** (`specs/`) — the formal definitions of SBS, PSS, CPA, Classification, and PHS
+2. **Templates** (`templates/`) — ready-to-fill skeletons for MEMORY, SIGNAL_REGISTRY, HANDSHAKES, missions, and handshakes
 3. **Examples** (`examples/`) — three reference projects demonstrating the system in different domains
-4. **Tooling** (`tools/`) — shell scripts to bootstrap and validate a CogniDoc-enabled repository
+4. **Tooling** (`tools/`) — shell scripts to bootstrap, validate, and bundle a CogniDoc-enabled repository
 
-Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) that LLMs auto-load, conceptual documentation (`docs/`), and the dogfooding artifacts in this repository (this MEMORY.md, SIGNAL_REGISTRY.md, and the missions/ directory).
+Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) that LLMs auto-load, conceptual documentation (`docs/`), and the dogfooding artifacts in this repository (this MEMORY.md, SIGNAL_REGISTRY.md, HANDSHAKES.md, and the missions/ and handshakes/ directories).
 
 ---
 
@@ -50,16 +50,17 @@ Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) tha
 
 | Metric | Value |
 |--------|-------|
-| Version | 0.1.1 |
+| Version | 0.2.0 |
 | Stage | Public Alpha |
-| Release date | 2026-05-02 |
-| Total tracked files | 47 |
-| Protocol specs | 4 (SBS, PSS, CPA, Classification) |
+| Release date | 2026-05-04 |
+| Total tracked files | 53 |
+| Protocol specs | 5 (SBS, PSS, CPA, Classification, PHS) |
 | Concept docs | 6 |
 | Reference examples | 3 |
-| Tools | 2 (init.sh, validate-beacons.sh) |
+| Tools | 3 (init.sh, validate-beacons.sh, context.sh) |
 | Active missions | 3 |
 | Active signals | 3 |
+| Total handshakes | 1 (latest: HS-001) |
 
 ---
 
@@ -67,13 +68,14 @@ Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) tha
 
 ```
 cognidoc/
-├── specs/         ← Protocol specifications (SBS, PSS, CPA, Classification)
-├── templates/     ← Fillable skeletons for MEMORY, SIGNAL_REGISTRY, missions, handshakes
+├── specs/         ← Protocol specifications (SBS, PSS, CPA, Classification, PHS)
+├── templates/     ← Fillable skeletons for MEMORY, SIGNAL_REGISTRY, HANDSHAKES, missions, handshakes
 ├── examples/      ← Three reference projects in different domains
-├── tools/         ← Bootstrap and validation shell scripts
+├── tools/         ← Bootstrap, validation, and bundling shell scripts
 ├── docs/          ← Conceptual documentation (getting-started, concepts, comparison, etc.)
 ├── bootloader/    ← COGNIDOC.md.template that downstream projects copy as their LLM bootloader
 ├── missions/      ← This project's own missions (dogfooding)
+├── handshakes/    ← This project's own handshake chain (dogfooding)
 └── .github/       ← CI workflows for beacon validation and link checking
 ```
 
@@ -82,10 +84,11 @@ cognidoc/
 | `specs/` | Source of truth for the protocols. Versioned independently |
 | `templates/` | Copy-paste starting points for adopters |
 | `examples/` | Three working projects: personal knowledge base, research notes, software project |
-| `tools/` | `init.sh` bootstraps a new project, `validate-beacons.sh` lints SBS tags |
+| `tools/` | `init.sh` bootstraps a new project, `validate-beacons.sh` lints SBS tags, `context.sh` bundles all docs into an LLM-ready block |
 | `docs/` | Reader-facing prose: concepts, getting-started, comparison, glossary, upgrade-path, use-cases |
 | `bootloader/` | The COGNIDOC.md template adopters install at the root of their own repos |
 | `missions/` | The dogfooded missions for the CogniDoc project itself |
+| `handshakes/` | The dogfooded handshake chain for this repository (one HS-NNN per commit per PHS) |
 | `.github/` | CI: lint markdown, validate beacons, check internal links |
 
 ---
@@ -95,6 +98,8 @@ cognidoc/
 | Date | Event |
 |------|-------|
 | 2026-05-02 | Initial public release v0.1.0. Repository made public. Specs, templates, examples, tools, docs, and dogfooded MEMORY/SIGNAL_REGISTRY/missions all shipped together |
+| 2026-05-03 | v0.1.1 quality-audit release. Cross-file version unification, repo URL fixes, removal of Spanish term residues, placeholder cleanup, ROP acronym replaced, file count corrected, example READMEs annotated, CLAUDE.md fallback reframed as Claude Code integration |
+| 2026-05-04 | v0.2.0 PHS protocol integration. Handshakes go from orphan feature (template-only) to first-class protocol with spec, index file, bootloader commands, propagation cascade, and dogfooded HS-001. Five foundational protocols total |
 
 ---
 
@@ -106,6 +111,9 @@ cognidoc/
 | D2 | T1 ships specs + templates + examples — no programmatic library | T1 is a literacy product: it teaches a convention. A library would couple adopters to a runtime; specs alone keep the system LLM-agnostic and language-neutral |
 | D3 | Bring-your-own-LLM | The protocols are designed to be interpreted by any sufficiently capable LLM. Tying T1 to a specific model would fragment adoption and create vendor lock-in |
 | D4 | English as primary documentation language | Maximizes initial reach. Spanish translation tracked as a P2 mission once community traction justifies the investment |
+| D5 | PHS as a peer protocol of SBS/PSS/CPA, not a CPA sub-section | Handshakes have their own format, lifecycle, and propagation rules. Naming the protocol PHS keeps it parallel to the others and gives it a clear authoritative spec file (`specs/PHS-v1.0.md`) |
+| D6 | Handshake storage at project root, not under `workspace/generated/` | The original orphan reference cited `workspace/generated/`; that path existed nowhere. Symmetry with the existing layout (siblings of MEMORY.md and missions/) wins over introducing a new directory hierarchy |
+| D7 | One handshake per content-changing commit | Defines the auditable unit. Hygiene-only commits (gitignore, formatting) are exempt at maintainer discretion. The pre-commit cascade is enforced strictly: counter updates BEFORE the developer commits |
 
 ---
 
@@ -144,8 +152,9 @@ Detailed status lives in each mission file under `missions/`.
 ---
 
 **Footer**
-Version: 0.1.1 — Public Alpha
-Last updated: 2026-05-02
+Version: 0.2.0 — Public Alpha
+Last updated: 2026-05-04
 Total missions: 3 (3 active, 0 completed)
 Total signals: 3 (2 ACTIVE, 1 WAITING, 0 PAUSED, 0 COMPLETED)
-Total tracked files: 47
+Total tracked files: 53
+Handshakes: 1 (latest: HS-001)

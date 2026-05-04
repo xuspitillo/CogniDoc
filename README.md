@@ -29,11 +29,12 @@ This is the **public, open-source foundation** of CogniDoc. It contains:
 
 - **Bootloader template** (`bootloader/COGNIDOC.md.template`) — the entry point any LLM reads first to understand the project.
 - **Memory templates** (`templates/`) — `MEMORY.md`, mission files, signal registry. The structure your project uses to remember itself.
-- **Protocol specifications** (`specs/`) — four foundational protocols:
+- **Protocol specifications** (`specs/`) — five foundational protocols:
   - **SBS** — Semantic Beacon System (cognitive navigation tags)
   - **PSS** — Project Signal System (5-state machine for processes/missions)
   - **CPA** — Consult-Plan-Autonomy pipeline (how the LLM processes each request)
   - **CLASSIFICATION** — Priority × Type taxonomy for missions
+  - **PHS** — Project Handshake System (immutable per-commit narrative checkpoints)
 - **Adoption documentation** (`docs/`) — getting started, concepts, comparisons, glossary.
 - **Reference examples** (`examples/`) — three working demos: personal knowledge base, software project, research notes.
 - **Lightweight tooling** (`tools/`) — initialization script, context bundler for non-file-capable LLMs, and basic beacon validator.
@@ -111,7 +112,7 @@ The CogniDoc protocol specifications, templates, and tooling in this repository 
 
 ## Status
 
-**Version:** 0.1.1 — Public Alpha
+**Version:** 0.2.0 — Public Alpha
 **Stability:** Specifications are stable. Templates and tooling may evolve based on early adopter feedback.
 **Origin:** CogniDoc was developed and validated internally at LIGHT Corp before being extracted for public release.
 

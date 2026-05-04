@@ -27,9 +27,11 @@ on user authentication (P1) and planning real-time notifications (P2).
 | `COGNIDOC.md` | Bootloader -- configures any LLM to work with this project |
 | `MEMORY.md` | Project memory -- state, stack, architecture, roadmap, catalog |
 | `SIGNAL_REGISTRY.md` | Signal registry -- atomic state tracking for all missions |
+| `HANDSHAKES.md` | Handshake index -- chronological per-commit checkpoints |
 | `missions/mis-001-auth-system.md` | Example mission -- JWT authentication feature |
+| `handshakes/hs-001-2026-04-15-api-docs-shipped.md` | Example handshake -- demonstrates the PHS format |
 
-> **Note:** This example ships with one fully detailed mission file (`mis-001-auth-system.md`). The additional missions referenced in `MEMORY.md` and `SIGNAL_REGISTRY.md` (mis-002 notifications, mis-003 api-docs, mis-004 rate-limiting) are intentionally left as catalog-only entries to demonstrate how a real project's memory grows over time -- you can see how missions are tracked through the catalog and signal registry without needing every detail file to be present.
+> **Note:** This example ships with one fully detailed mission file (`mis-001-auth-system.md`) and one fully detailed handshake (`hs-001-...md`). The additional missions referenced in `MEMORY.md` and `SIGNAL_REGISTRY.md` (mis-002 notifications, mis-003 api-docs, mis-004 rate-limiting) are intentionally left as catalog-only entries to demonstrate how a real project's memory grows over time -- you can see how missions are tracked through the catalog and signal registry without needing every detail file to be present.
 
 ## How to Try It
 

@@ -32,6 +32,10 @@ Each mission (feature, task, initiative) gets its own file with metadata, object
 
 A dedicated registry tracking the state of every mission and process using a formal 5-state machine (Active, Paused, Waiting, Completed, Evolution).
 
+### Handshakes
+
+An append-only chain of immutable narrative checkpoints. One handshake is generated before every commit that changes project content, documenting what changed since the previous handshake, why, and how it affected missions and decisions. The chain is forensic-quality: any LLM reading the latest handshake — without prior context — can bootstrap into the project. Handshakes complement mission progress logs: missions log per-mission progress; handshakes log per-commit project state.
+
 ## Semantic beacons
 
 Inline tags like `[*(ARC.W1.DEF>S3)*]` embedded in documentation. They encode:
@@ -82,9 +86,10 @@ Higher tiers add programmatic validation (parsers, validators, CI/CD integration
 | Beacon | Inline semantic tag for cognitive navigation |
 | Mission | A tracked unit of work with its own memory file |
 | Signal | A state transition event in the PSS |
-| Handshake | A narrative checkpoint documenting project state at a point in time |
+| Handshake | An immutable narrative checkpoint generated before every commit |
 | CPA | Consult-Plan-Autonomy -- the operational pipeline |
 | PSS | Project Signal System -- state tracking |
+| PHS | Project Handshake System -- chronological narrative checkpoints |
 | SBS | Semantic Beacon System -- navigation |
 
 ## What CogniDoc is NOT

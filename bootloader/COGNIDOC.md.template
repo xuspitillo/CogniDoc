@@ -4,7 +4,7 @@ This file is the **bootloader** of your project's cognitive documentation system
 Every LLM session begins by reading this file. It defines how the LLM navigates,
 updates, and verifies your project's living memory.
 
-**Powered by CogniDoc v0.1.1** — https://github.com/{{ORG}}/cognidoc
+**Powered by CogniDoc v0.2.0** — https://github.com/{{ORG}}/cognidoc
 
 ---
 
@@ -180,6 +180,61 @@ changes in repository files, memory documents, and any task that modifies conten
 
 ---
 
+## Project Handshake System (PHS)
+
+### What is a handshake
+
+A **handshake** is an immutable, chronological narrative checkpoint of the project's
+state. One handshake is generated **before every commit that changes project content**.
+Each handshake is self-contained: an LLM that reads only the latest handshake can
+identify the project, understand its state, and continue work coherently.
+
+The complete protocol lives in `specs/PHS-v1.0.md`. The summary below is the operational
+contract every session must follow.
+
+### Identifier and filename
+
+| Element | Format | Example |
+|---------|--------|---------|
+| Identifier | `HS-NNN` (sequential, zero-padded, never reused) | `HS-007` |
+| Filename | `handshakes/hs-NNN-YYYY-MM-DD-slug.md` | `handshakes/hs-007-2026-05-08-auth-phase-2.md` |
+
+### Required sections in every handshake
+
+1. Title and metadata block (HS-ID, project, date, slug, `Previous: HS-NNN`)
+2. Executive Summary
+3. System State
+4. Advances Since Last Handshake
+5. Files Created / Modified
+6. Decisions Taken
+7. Impact on Missions
+8. Roadmap and Next Steps
+9. Warnings and Risks
+10. Context for External Agents
+
+### Pre-commit protocol (strict ordering)
+
+The following sequence is non-negotiable. The LLM agent performs steps 2-7 atomically
+**before** the developer commits.
+
+| Step | Action |
+|------|--------|
+| 1 | Complete all content changes (code, missions, memory, signals, etc.) |
+| 2 | Read `HANDSHAKES.md`, determine next number N |
+| 3 | Generate `handshakes/hs-N-YYYY-MM-DD-slug.md` from `templates/handshakes/_template.md` |
+| 4 | Append entry to `HANDSHAKES.md` Quick Index |
+| 5 | Update `HANDSHAKES.md` header (total, latest, last-updated) |
+| 6 | Update `MEMORY.md` footer (`Handshakes: N (latest: HS-N)`) |
+| 7 | Cross-reference HS-N in affected mission progress logs |
+| 8 | Return control with: "handshake HS-N generated, ready to commit" |
+| 9 | Developer commits |
+
+If the commit happens before steps 5-6 complete, it captures stale counters and the
+audit chain is broken. The agent MUST confirm step 8 explicitly so the developer knows
+when it is safe to commit.
+
+---
+
 ## Session Protocol
 
 ### User commands and required actions
@@ -219,6 +274,23 @@ changes in repository files, memory documents, and any task that modifies conten
    - Read MEMORY.md section 9
    - Present only the active roadmap (P1-P2)
 
+8. **"new handshake"** or **"generate handshake"**
+   - Apply the PHS pre-commit protocol (see PHS section). In order:
+     - Read `HANDSHAKES.md` to determine next HS number N
+     - Create `handshakes/hs-N-YYYY-MM-DD-slug.md` from the handshake template, fill all 10 required sections
+     - Append entry to `HANDSHAKES.md` Quick Index, update header (total, latest, last-updated)
+     - Update `MEMORY.md` footer counter (`Handshakes: N (latest: HS-N)`)
+     - Cross-reference HS-N in any mission progress logs touched in this work cycle
+     - Return: "handshake HS-N generated, ready to commit"
+
+9. **"handshakes"** or **"handshake history"**
+   - Read `HANDSHAKES.md`
+   - Present the Quick Index (chronological list of all handshakes)
+
+10. **"handshake HS-NNN"**
+    - Read `handshakes/hs-NNN-*.md` (resolve the slug from the filename)
+    - Confirm content; wait for instructions
+
 ---
 
 ## Update methodology
@@ -227,7 +299,10 @@ changes in repository files, memory documents, and any task that modifies conten
 - **MEMORY.md Roadmap (Section 9)**: Update when a P1/P2 mission changes state or phase
 - **MEMORY.md Catalog (Section 10)**: Update when any mission is created or changes classification
 - **MEMORY.md General (Sections 1-8)**: Update ONLY when a reached milestone affects global state
+- **MEMORY.md footer**: Bump `Handshakes: N (latest: HS-N)` on every handshake generation
 - **Signal Registry**: Update when signals are emitted (create, pause, wait, resume, complete)
+- **HANDSHAKES.md**: Append a Quick Index entry on every handshake generation; update header counters
+- **Handshake files**: Generated before every commit that changes project content. Immutable once written
 - **SBS Beacons**: When updating any file, verify and update existing beacons if content has changed
 
 ---
@@ -239,11 +314,14 @@ changes in repository files, memory documents, and any task that modifies conten
 ├── COGNIDOC.md                    <- This file (protocol — auto-read by LLM)
 ├── MEMORY.md                      <- General project memory
 ├── SIGNAL_REGISTRY.md             <- Signal registry (process states)
-└── missions/                      <- Individual mission memories
-    ├── mis-XXX-slug.md            <- Flat mission (no sub-missions)
-    └── mis-XXX-slug/              <- Mission promoted to folder (with sub-missions)
-        ├── mis-XXX-slug.md        <- Main mission file
-        └── mis-YYY-sub.md         <- Sub-mission (BRANCH)
+├── HANDSHAKES.md                  <- Handshake index (chronological checkpoints)
+├── missions/                      <- Individual mission memories
+│   ├── mis-XXX-slug.md            <- Flat mission (no sub-missions)
+│   └── mis-XXX-slug/              <- Mission promoted to folder (with sub-missions)
+│       ├── mis-XXX-slug.md        <- Main mission file
+│       └── mis-YYY-sub.md         <- Sub-mission (BRANCH)
+└── handshakes/                    <- Immutable handshake files
+    └── hs-NNN-YYYY-MM-DD-slug.md  <- One per commit that changes project content
 ```
 
 ### File-to-folder promotion
@@ -270,3 +348,5 @@ changes in repository files, memory documents, and any task that modifies conten
 8. Every mission, regardless of priority, is registered and classified with equal documentary excellence
 9. SBS beacons are cognitive infrastructure: maintain, update, and propagate them with the same discipline as the content they annotate
 10. The CPA protocol is the default operational pipeline for EVERY request
+11. Handshakes are immutable: once generated, never modified. Corrections go into the next handshake
+12. Every commit that changes project content is preceded by a handshake; the propagation cascade (HANDSHAKES.md + MEMORY.md counter) completes BEFORE the commit

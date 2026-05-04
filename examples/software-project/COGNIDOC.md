@@ -88,6 +88,9 @@ Execute the plan:
 8. **"check coverage"** -- Run coverage report, identify untested code paths
 9. **"roadmap"** -- Show active P1/P2 missions with current status
 10. **"status"** -- Quick summary of all missions by priority and state
+11. **"new handshake"** -- Apply the PHS pre-commit protocol: read HANDSHAKES.md, create `handshakes/hs-N-YYYY-MM-DD-slug.md`, update HANDSHAKES.md index, update MEMORY.md footer counter, then return "ready to commit"
+12. **"handshakes"** -- Show the chronological index from HANDSHAKES.md
+13. **"handshake HS-NNN"** -- Read a specific handshake file
 
 ### Signal Commands
 
@@ -105,8 +108,11 @@ taskflow/
 ├── COGNIDOC.md            <-- This file (bootloader)
 ├── MEMORY.md              <-- Project memory
 ├── SIGNAL_REGISTRY.md     <-- Mission state tracking
+├── HANDSHAKES.md          <-- Handshake index (one per commit)
 ├── missions/              <-- Mission files
 │   └── mis-XXX-slug.md
+├── handshakes/            <-- Immutable per-commit checkpoints
+│   └── hs-NNN-YYYY-MM-DD-slug.md
 ├── src/
 │   ├── app.py             <-- FastAPI application entry
 │   ├── config.py           <-- Settings and environment
@@ -136,7 +142,10 @@ taskflow/
 - **Mission files**: Update checks `[x]`, milestones, and progress log on every advance
 - **MEMORY.md Roadmap (S9)**: Update when a P1/P2 mission changes state or phase
 - **MEMORY.md Catalog (S10)**: Update when any mission is created, reclassified, or completed
+- **MEMORY.md footer**: Bump `Handshakes: N (latest: HS-N)` on every handshake generation
 - **SIGNAL_REGISTRY.md**: Update on every state transition (create, pause, wait, resume, complete)
+- **HANDSHAKES.md**: Append a Quick Index entry on every handshake generation; update header counters
+- **Handshake files**: Generated before every commit that changes project content. Immutable once written. See `specs/PHS-v1.0.md`
 
 ---
 
