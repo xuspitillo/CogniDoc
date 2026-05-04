@@ -42,7 +42,7 @@ CogniDoc T1 is composed of four pillars:
 3. **Examples** (`examples/`) — three reference projects demonstrating the system in different domains
 4. **Tooling** (`tools/`) — shell scripts to bootstrap, validate, and bundle a CogniDoc-enabled repository
 
-Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) that LLMs auto-load, conceptual documentation (`docs/`), and the dogfooding artifacts in this repository (this MEMORY.md, SIGNAL_REGISTRY.md, HANDSHAKES.md, and the missions/ and handshakes/ directories).
+Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) that LLMs auto-load and conceptual documentation (`docs/`).
 
 ---
 
@@ -53,14 +53,13 @@ Supporting layers: a bootloader template (`bootloader/COGNIDOC.md.template`) tha
 | Version | 0.2.0 |
 | Stage | Public Alpha |
 | Release date | 2026-05-04 |
-| Total tracked files | 53 |
+| Total tracked files | 51 |
 | Protocol specs | 5 (SBS, PSS, CPA, Classification, PHS) |
 | Concept docs | 6 |
 | Reference examples | 3 |
 | Tools | 3 (init.sh, validate-beacons.sh, context.sh) |
 | Active missions | 3 |
 | Active signals | 3 |
-| Total handshakes | 1 (latest: HS-001) |
 
 ---
 
@@ -75,7 +74,6 @@ cognidoc/
 ├── docs/          ← Conceptual documentation (getting-started, concepts, comparison, etc.)
 ├── bootloader/    ← COGNIDOC.md.template that downstream projects copy as their LLM bootloader
 ├── missions/      ← This project's own missions (dogfooding)
-├── handshakes/    ← This project's own handshake chain (dogfooding)
 └── .github/       ← CI workflows for beacon validation and link checking
 ```
 
@@ -88,7 +86,6 @@ cognidoc/
 | `docs/` | Reader-facing prose: concepts, getting-started, comparison, glossary, upgrade-path, use-cases |
 | `bootloader/` | The COGNIDOC.md template adopters install at the root of their own repos |
 | `missions/` | The dogfooded missions for the CogniDoc project itself |
-| `handshakes/` | The dogfooded handshake chain for this repository (one HS-NNN per commit per PHS) |
 | `.github/` | CI: lint markdown, validate beacons, check internal links |
 
 ---
@@ -99,7 +96,7 @@ cognidoc/
 |------|-------|
 | 2026-05-02 | Initial public release v0.1.0. Repository made public. Specs, templates, examples, tools, docs, and dogfooded MEMORY/SIGNAL_REGISTRY/missions all shipped together |
 | 2026-05-03 | v0.1.1 quality-audit release. Cross-file version unification, repo URL fixes, removal of Spanish term residues, placeholder cleanup, ROP acronym replaced, file count corrected, example READMEs annotated, CLAUDE.md fallback reframed as Claude Code integration |
-| 2026-05-04 | v0.2.0 PHS protocol integration. Handshakes go from orphan feature (template-only) to first-class protocol with spec, index file, bootloader commands, propagation cascade, and dogfooded HS-001. Five foundational protocols total |
+| 2026-05-04 | v0.2.0 PHS protocol integration. Handshakes go from orphan feature (template-only) to first-class protocol with spec, index template, bootloader commands, and propagation cascade rules. Five foundational protocols total. Adopters get HANDSHAKES.md and handshakes/ in their projects via init.sh; this repo defines the protocol but does not apply PHS to itself |
 
 ---
 
@@ -156,5 +153,4 @@ Version: 0.2.0 — Public Alpha
 Last updated: 2026-05-04
 Total missions: 3 (3 active, 0 completed)
 Total signals: 3 (2 ACTIVE, 1 WAITING, 0 PAUSED, 0 COMPLETED)
-Total tracked files: 53
-Handshakes: 1 (latest: HS-001)
+Total tracked files: 51

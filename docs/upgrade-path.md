@@ -2,13 +2,15 @@
 
 ## What you have now (Tier 1: Foundation)
 
-The open-source foundation includes: a bootloader (`COGNIDOC.md` template), memory file templates, four protocol specifications (SBS navigation, PSS state tracking, CPA operational pipeline, Mission Classification), working examples, and lightweight tooling. Free under Apache 2.0. Works with any LLM.
+The open-source foundation includes: a bootloader (`COGNIDOC.md` template), memory file templates, five protocol specifications (SBS navigation, PSS state tracking, CPA operational pipeline, Mission Classification, PHS handshakes), working examples, and lightweight tooling. Free under Apache 2.0. Works with any LLM.
 
 ## The upgrade path
 
-CogniDoc is a progressive system. Each tier adds capabilities while remaining backward-compatible with everything you already have.
+> **Status notice:** Tier 1 (this repository) is the only release shipping today. **Tiers 2 through 6 described below are in development and not yet available.** This page documents the long-term roadmap and design intent for higher tiers — treat it as direction and scope reservation, not as a product catalog. The descriptions are stable enough to inform a "should I build for T1 or wait for T2?" decision; pricing, exact feature lists, and ship dates are not yet committed.
 
-### Tier 2: Starter — "The System + Manual"
+CogniDoc is designed as a progressive system. Each tier adds capabilities while remaining backward-compatible with everything you already have.
+
+### Tier 2: Starter — "The System + Manual" *(in development)*
 
 What it adds:
 
@@ -18,7 +20,7 @@ What it adds:
 
 Who it's for: Individual developers or small teams who want programmatic validation and professional documentation output.
 
-### Tier 3: Professional — "The Complete System"
+### Tier 3: Professional — "The Complete System" *(in development)*
 
 What it adds:
 
@@ -29,7 +31,7 @@ What it adds:
 
 Who it's for: Teams that need verified coherence, professional setup, and support.
 
-### Tier 4: Professional Plus — "The System + Local AI"
+### Tier 4: Professional Plus — "The System + Local AI" *(in development)*
 
 What it adds:
 
@@ -39,7 +41,7 @@ What it adds:
 
 Who it's for: Organizations with GPU infrastructure that want specialized AI without cloud dependency.
 
-### Tier 5: Enterprise — "System + SaaS AI by Niche"
+### Tier 5: Enterprise — "System + SaaS AI by Niche" *(in development)*
 
 What it adds:
 
@@ -50,7 +52,7 @@ What it adds:
 
 Who it's for: Organizations that want expert AI without managing GPU infrastructure.
 
-### Tier 6: Enterprise Premium — "The Dedicated Suite"
+### Tier 6: Enterprise Premium — "The Dedicated Suite" *(in development)*
 
 What it adds:
 

@@ -2,10 +2,9 @@
 
 **Cognitive documentation infrastructure for LLM-driven projects.**
 
-CogniDoc turns any project into a system that LLMs can understand, navigate, and operate on coherently — across sessions, across team members, across scale.
+CogniDoc gives a project a persistent memory and navigation layer that any LLM can read at session start and keep up to date as work progresses — across sessions and across team members.
 
-It is not a wrapper around prompt engineering. It is not a RAG framework. It is not an agent library.
-It is the **operating layer** that makes those tools work reliably on real, long-lived projects.
+It is not prompt engineering, not a RAG framework, and not an agent library. It is a documentation and protocol layer those tools operate on top of: a structured representation of what the project knows about itself, expressed in a form an LLM can navigate, update, and keep coherent.
 
 ---
 
@@ -78,7 +77,7 @@ That is it. From the first message in your LLM session, the assistant knows:
 
 1. **The bootloader (`COGNIDOC.md`)** is the protocol the LLM reads first. It defines how to navigate, how to update memory, how to classify work, and how to verify coherence before committing changes.
 2. **The memory system (`MEMORY.md` + missions + signal registry)** is the project's living state. Every change updates it. Every LLM session reads it.
-3. **The semantic beacons (`[*(domain.weight.role>destination)*]`)** are inline tags that let any LLM jump directly to relevant content without reading entire documents — the difference between a tourist with a map and a native who knows every street.
+3. **The semantic beacons (`[*(domain.weight.role>destination)*]`)** are inline tags that let any LLM jump directly to relevant content. The LLM filters by domain, weight, or role rather than scanning every document linearly.
 
 ---
 
@@ -90,7 +89,7 @@ That is it. From the first message in your LLM session, the assistant knows:
 | **LangChain / agent frameworks** | Orchestrates tool calls | Provides a self-aware project structure |
 | **n8n / workflow engines** | Automates pipelines | Tracks cognitive state of long-lived missions |
 | **Custom memory layers** | Stores context in a database | Forms a self-coherent operating protocol |
-| **CogniDoc** | All of the above, integrated as a coherent operating layer | (You can use any of those tools INSIDE a CogniDoc-managed project) |
+| **CogniDoc** | Persistent, navigable project state that the above tools can operate on top of | (Use any of those tools INSIDE a CogniDoc-managed project; CogniDoc is the documentation layer, not a replacement for execution engines or retrieval systems) |
 
 CogniDoc does not replace your existing stack. It **organizes** it.
 

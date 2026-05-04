@@ -84,12 +84,11 @@ jobs:
           done
           echo "All specs present."
 
-      - name: Verify root-level cognitive files exist
+      - name: Verify dogfooded root files exist (MEMORY, SIGNAL_REGISTRY)
         run: |
           files=(
             "MEMORY.md"
             "SIGNAL_REGISTRY.md"
-            "HANDSHAKES.md"
           )
           for f in "${files[@]}"; do
             if [ ! -f "$f" ]; then
@@ -97,7 +96,7 @@ jobs:
               exit 1
             fi
           done
-          echo "All cognitive root files present."
+          echo "All dogfooded root files present."
 
       - name: Verify tooling is executable
         run: |

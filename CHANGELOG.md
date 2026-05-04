@@ -8,24 +8,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [0.2.0] — 2026-05-04
 
-### Added — Project Handshake System (PHS) integrated as fourth foundational protocol
+### Added — Project Handshake System (PHS) integrated as fifth foundational protocol
 
 - **`specs/PHS-v1.0.md`** — Project Handshake System v1.0 specification. Defines handshake format, the immutable append-only chain, pre-commit generation trigger, propagation cascade, strict ordering rules, storage layout, and best practices. Peer protocol of SBS, PSS, CPA, and CLASSIFICATION.
-- **`HANDSHAKES.md`** at the project root — handshake index. Quick Index table of every handshake with date, title, and optional commit hash. Mirrors the role of `SIGNAL_REGISTRY.md` for handshakes.
-- **`templates/HANDSHAKES.md.template`** — adopter template for the index file.
-- **`handshakes/hs-001-2026-05-04-phs-protocol-integration.md`** — first dogfooded handshake. Documents the PHS integration itself.
+- **`templates/HANDSHAKES.md.template`** — adopter template for the index file. Adopters generate `HANDSHAKES.md` in their own projects via `init.sh`.
 - **Bootloader (`bootloader/COGNIDOC.md.template`)** now includes a full PHS section, three new session commands (`new handshake` / `generate handshake`, `handshakes` / `handshake history`, `handshake HS-NNN`), update methodology entries for HANDSHAKES.md and the MEMORY.md footer counter, updated directory structure, and two new fundamental principles (handshake immutability and pre-commit cascade enforcement).
-- **`tools/init.sh`** generates `HANDSHAKES.md` from the new template alongside the other root files. Numbered steps go from 5 to 6.
-- **`tools/context.sh`** bundles `HANDSHAKES.md` (Section 4) and the three most recent handshake files (Section 6) into the LLM-ready context block.
+- **`tools/init.sh`** generates `HANDSHAKES.md` in the adopter's project from the new template alongside the other root files. Numbered steps go from 5 to 6.
+- **`tools/context.sh`** bundles `HANDSHAKES.md` (Section 4) and the three most recent handshake files (Section 6) from the adopter's project into the LLM-ready context block.
 - **`templates/MEMORY.md.template`** footer counter format is now `Handshakes: N (latest: HS-N)` with a comment explaining the PHS pre-commit cascade.
 - **`docs/glossary.md`** — `Handshake` entry rewritten to reflect the integrated protocol; new entries for `HANDSHAKES.md`, `HS-NNN`, and `PHS`. Orphan reference to `workspace/generated/` removed.
 - **`docs/concepts.md`** — Handshakes added as a section in "Living memory vs static docs"; `PHS` added to terminology table.
-- **`examples/software-project/`** — example HANDSHAKES.md and a sample handshake (HS-001 covering the API documentation milestone) demonstrate the format in a real adoption.
+- **`examples/software-project/`** — example `HANDSHAKES.md` and a sample handshake (`hs-001-2026-04-15-api-docs-shipped.md`) demonstrate the format in a realistic adopter project.
 
 ### Changed
 
 - **Version bump 0.1.1 → 0.2.0**: minor-version event per semver because a new foundational protocol was added. Backward-compatible: v0.1.x adopters can upgrade by copying `HANDSHAKES.md` from the new template and adopting the bootloader's PHS section without rewriting existing memory or missions.
-- **MEMORY.md (dogfooded)** — version bumped, footer counter format updated, S4 metrics refreshed (5 specs instead of 4, 3 tools instead of 2, handshake counter added), three new architectural decisions logged (D5-D7), history row added for v0.2.0.
+- **MEMORY.md (dogfooded)** — version bumped, S4 metrics refreshed (5 specs instead of 4, 3 tools instead of 2), three new architectural decisions logged (D5-D7), history row added for v0.2.0.
+
+### Notes on scope
+
+PHS applies to the projects that adopt CogniDoc. The CogniDoc repository itself does **not** apply PHS to its own commits — this repository establishes the protocol but does not run it. Adopters get a working `HANDSHAKES.md` and `handshakes/` directory in their projects via `init.sh`; the example under `examples/software-project/` demonstrates a real handshake.
 
 ## [0.1.1] — 2026-05-03
 
