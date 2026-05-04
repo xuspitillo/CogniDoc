@@ -1,0 +1,19 @@
+CogniDoc — Cognitive Documentation System
+Copyright 2026 LIGHT Corp
+
+This product includes software developed by LIGHT Corp.
+
+CogniDoc is a registered project name of LIGHT Corp. The protocols
+documented in this repository (Semantic Beacon System, Project Signal
+System, Consult-Plan-Autonomy pipeline, Mission Classification System)
+were originally developed and validated as part of LIGHT Corp's
+internal cognitive infrastructure starting in 2026-02.
+
+This Tier 1 (Foundation) public release contains specifications,
+templates, documentation, and tooling. The validated programmatic
+implementations (parsers, validators, classifiers, orchestration
+engines) are part of higher commercial tiers and are not included
+in this distribution.
+
+For more information about CogniDoc tiers, licensing, and enterprise
+features, see docs/upgrade-path.md.

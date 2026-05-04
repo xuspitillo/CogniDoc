@@ -1,0 +1,96 @@
+# {{PROJECT_NAME}} — Signal Registry
+
+> Last updated: {{DATE}}
+> Total signals: 0
+
+---
+
+## Quick Index
+
+| SIG-ID | Target | State | Last Signal | Date | Beacon |
+|--------|--------|-------|-------------|------|--------|
+
+<!--
+Example rows:
+| SIG-001 | MIS-001 | ACTIVE    | Created   | 2025-01-15 | [*(ARQ.W2.SIG>SR.SIG-001)*] |
+| SIG-002 | MIS-003 | PAUSED    | Pause     | 2025-02-10 | [*(COG.W2.SIG>SR.SIG-002)*] |
+| SIG-003 | MIS-001/P-2 | WAITING | Wait   | 2025-03-01 | [*(SRV.W3.SIG>SR.SIG-003)*] |
+-->
+
+---
+
+## Signal Entries
+
+<!--
+### SIG-001 — [Target Name]
+
+- **Target:** MIS-XXX
+- **State:** ACTIVE
+- **Created:** YYYY-MM-DD
+- **Reason:** [Why this signal was created]
+- **Related missions:** MIS-YYY (dependency), MIS-ZZZ (parallel)
+- **Beacon:** [*(DOM.W.SIG>SR.SIG-001)*]
+
+#### Signal History
+
+| Date | Signal | Previous State | New State | Reason |
+|------|--------|----------------|-----------|--------|
+| YYYY-MM-DD | Created | — | ACTIVE | Mission created with scope defined |
+-->
+
+---
+
+## States Reference
+
+| State | Meaning | How it is reached |
+|-------|---------|-------------------|
+| ACTIVE | Process in progress | Organic (on mission creation) or `[[resume X]]` |
+| PAUSED | Paused by explicit decision | `[[pause X]]` |
+| WAITING | Awaiting external trigger or condition | `[[wait X]]` |
+| COMPLETED | Finished (immutable) | `[[complete X]]` |
+| EVOLUTION | New SIG derived from a COMPLETED one | Organic (new SIG with Ancestor field) |
+
+### Valid Transitions
+
+```
+ACTIVE -----> PAUSED      [[pause X]]
+ACTIVE -----> WAITING     [[wait X]]
+ACTIVE -----> COMPLETED   [[complete X]]
+PAUSED -----> ACTIVE      [[resume X]]
+WAITING ----> ACTIVE      [[resume X]]
+COMPLETED --> EVOLUTION   (new SIG created with Ancestor reference)
+```
+
+> **Key distinction:** PAUSED = explicit decision by the project lead. WAITING = blocked on an external condition.
+
+---
+
+## Conventions
+
+### Organic Creation
+Signals are created automatically when a new mission is registered. No explicit signal command is needed. The entry is added to the Quick Index and a full Signal Entry is created with state ACTIVE.
+
+### Explicit Signals
+Project leads can emit signals directly or contextually:
+- `[[pause X]]` — Pause target X
+- `[[wait X]]` — Mark target X as waiting for external condition
+- `[[resume X]]` — Resume target X from PAUSED or WAITING
+- `[[complete X]]` — Mark target X as completed (irreversible)
+
+Target format is flexible: `MIS-XXX` (missions), `MIS-XXX/P-N` (phases), or a descriptive slug (processes).
+
+### Evolution Pattern
+When a COMPLETED signal needs improvement due to new knowledge:
+1. The original SIG remains **immutable** (COMPLETED)
+2. A new SIG is created with field `Ancestor: SIG-XXX`
+3. The original SIG receives a single update: field `Evolutions: SIG-YYY` (forward pointer)
+4. The new SIG has equal or higher hierarchy than its ancestor
+
+### Immutability
+Once a signal reaches COMPLETED, its entry is frozen. No fields may be modified except the addition of an `Evolutions` forward pointer if a derived SIG is created. Corrections or amendments are documented in the next signal, never by altering a completed one.
+
+### Propagation Cascade
+On any signal emission:
+1. **SIGNAL_REGISTRY.md** — Create or update entry + signal history
+2. **Target mission file** — Update metadata (state) + log entry with beacon
+3. **Project memory** — Update roadmap if the mission is high priority

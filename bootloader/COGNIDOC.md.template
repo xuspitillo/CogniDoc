@@ -1,0 +1,272 @@
+# {{PROJECT_NAME}} — CogniDoc Cognitive Protocol
+
+This file is the **bootloader** of your project's cognitive documentation system.
+Every LLM session begins by reading this file. It defines how the LLM navigates,
+updates, and verifies your project's living memory.
+
+**Powered by CogniDoc v0.1.1** — https://github.com/{{ORG}}/cognidoc
+
+---
+
+## Semantic Beacon System (SBS)
+
+### What is SBS
+
+The Semantic Beacon System is a network of inline tags embedded organically in your
+project documentation. Each beacon is a cognitive navigation node that allows any LLM to:
+- Identify the relative importance of each information fragment (weight W1-W5)
+- Know the semantic domain without reading the full context (domain)
+- Follow cross-layer connections without redundant reads (destination)
+- Filter information by relevance to the current task (role)
+
+### Canonical format
+
+**Simple beacon:**
+```
+[*(DOMAIN.WEIGHT.ROLE>DESTINATION)*]
+```
+
+**Pack beacon (multiple dimensions):**
+```
+[*(DOMAIN.WEIGHT.ROLE>DESTINATION | DOMAIN.WEIGHT.ROLE>DESTINATION)*]
+```
+
+### Domains (semantic context)
+
+Customize these for your project. The defaults below cover common scenarios:
+
+| Code | Domain | Coverage |
+|------|--------|----------|
+| ARC | Architecture | Layers, patterns, system structure |
+| SRV | Services | Docker, CI/CD, operational infrastructure |
+| COG | Cognitive | Memory system, beacons, missions, protocols |
+| HW | Hardware | Physical resources, monitoring |
+| AI | AI Processes | Training, inference, models |
+| EXT | External | Integrations, webhooks, APIs, cloud |
+| SEC | Security | Auth, encryption, access control |
+| BIZ | Business | Products, domains, strategy |
+| UI | Interface | Dashboard, web, UX, templates |
+| DAT | Data | Persistence, databases, caches |
+
+### Weights (W1-W5 — LLM attention)
+
+| Weight | Meaning | Implicit instruction |
+|--------|---------|----------------------|
+| W1 | Critical | ALWAYS read. Fundamental system definition |
+| W2 | High | Read if the work context is relevant |
+| W3 | Medium | Consult if deeper detail is needed |
+| W4 | Low | Only if searching for specific detail |
+| W5 | Note | Ignore unless directed search |
+
+### Roles (semantic function)
+
+| Code | Role | What it marks |
+|------|------|---------------|
+| DEF | Definition | What something IS — fundamental concept |
+| DEC | Decision | Why something was chosen — architectural justification |
+| DEP | Dependency | Requires or depends on another element |
+| REF | Reference | See also — related content in another location |
+| HIT | Milestone | Milestone reached or checkpoint |
+| PAT | Pattern | Reusable pattern, exportable to other contexts |
+| RIS | Risk | Identified threat or applied mitigation |
+| EVL | Evolution | Change, progression, transformation of something prior |
+| SIG | Signal | State transition of a process, mission, or trackable element |
+
+### Destinations (where the beacon points)
+
+| Format | Points to |
+|--------|-----------|
+| >MIS-XXX | Specific mission |
+| >SN | Section N of MEMORY.md |
+| >SR | SIGNAL_REGISTRY.md (general signal registry) |
+| >SR.SIG-NNN | Specific signal in the registry |
+
+### LLM usage protocol
+
+1. **When reading a file**: Scan W1 beacons first — they are fundamental definitions
+2. **When searching**: Filter by relevant domain (e.g., working on UI -> look for `[*(UI.*)*]`)
+3. **When following references**: Beacons with ROLE=REF point to complementary content — follow only if needed
+4. **When updating documents**: Insert beacons at semantically dense points (definitions, decisions, milestones)
+
+---
+
+## Project Signal System (PSS)
+
+### 5-state machine
+
+| State | Meaning | How it is reached |
+|-------|---------|-------------------|
+| ACTIVE | Process in progress | Organic (on mission creation) or `[[resume X]]` |
+| PAUSED | Paused by explicit decision | `[[pause X]]` |
+| WAITING | Waiting for external trigger or condition | `[[wait X]]` |
+| COMPLETED | Finished (immutable) | `[[complete X]]` |
+| EVOLUTION | New SIG derived from a COMPLETED one | Organic (new SIG with Ancestor) |
+
+**Key distinction:** PAUSED = explicit decision. WAITING = waiting for external condition.
+
+### Signal syntax
+
+| Signal | Syntax | Type |
+|--------|--------|------|
+| Create | *(organic, on mission/process creation)* | Automatic |
+| Pause | `[[pause X]]` | Explicit/contextual |
+| Wait | `[[wait X]]` | Explicit/contextual |
+| Resume | `[[resume X]]` | Explicit/contextual |
+| Complete | `[[complete X]]` | Explicit/contextual |
+
+### Propagation cascade
+
+When any signal is emitted:
+1. **SIGNAL_REGISTRY.md**: Create/update entry + signal history
+2. **Mission target**: Update METADATA (State) + log entry
+3. **MEMORY.md**: Update roadmap section if the mission is P1/P2
+
+---
+
+## Mission Classification System
+
+### Priorities (P1-P5)
+
+| Level | Label | Meaning | Visibility in MEMORY.md |
+|-------|-------|---------|-------------------------|
+| P1 | CRITICAL | Active roadmap. Immediate integration | Roadmap + Catalog |
+| P2 | HIGH | Important, plan soon. Impacts project goals | Roadmap + Catalog |
+| P3 | MEDIUM | Valuable, wait for the right moment | Catalog only |
+| P4 | LOW | Available when convenient | Catalog only |
+| P5 | NOTE | Embryonic idea for the future | Catalog only |
+
+### Mission types
+
+| Type | Meaning |
+|------|---------|
+| ROOT | Trunk mission on the main development line |
+| BRANCH | Child sub-mission of another mission (shares scope) |
+| SATELLITE | Independent parallel project, not on the critical path |
+| NOTE | Minimal record of a future idea without defined scope |
+
+**Key principle:** Priority and type are orthogonal axes. A SATELLITE can be P1. A ROOT can be P3.
+
+---
+
+## Consult-Plan-Autonomy Pipeline (CPA)
+
+### What is CPA
+
+The CPA is the **default operational protocol** for every request. It applies to all
+changes in repository files, memory documents, and any task that modifies content.
+
+### Phase C — Intelligent Consultation
+
+1. **Feasibility analysis:** Does the LLM have enough context to produce an optimal plan?
+2. **Binary decision:**
+   - Sufficient context -> advance to Phase P
+   - Insufficient or beneficial to consult -> generate a single, complete questionnaire
+3. **Single questionnaire** (if needed): cover ALL ambiguities in ONE round. NEVER fragment.
+
+### Phase P — Action Plan
+
+1. **Change inventory:** Exhaustive list of files to create/modify/delete
+2. **Operation order:** Logical execution sequence (dependencies between changes)
+3. **Memory impact:** Cognitive documents affected
+4. **Risk analysis:** Zombie processes, circular dependencies, blocked files, context limits
+5. **Segmentation** (if needed): divide into atomic, self-contained packages
+
+### Phase A — Orchestrated Autonomy
+
+1. **Sequential or parallel execution** per dependencies defined in the plan
+2. **Post-operation verification:** Each operation validated before advancing
+3. **Automatic propagation:** Cascade updates executed as integral part
+4. **Light audit:** Final coherence check across affected documents
+
+---
+
+## Session Protocol
+
+### User commands and required actions
+
+1. **"access memory"** or **"analyze memory"**
+   - Read `MEMORY.md`
+   - Confirm acquired context with summary: project state, active roadmap mission, total missions
+   - Wait for instructions
+
+2. **"analyze [name]"**
+   - Find the mission associated with the name in MEMORY.md Catalog (Section 10)
+   - Read the corresponding mission file
+   - Confirm current state: phase, progress, priority, type
+   - Wait for instructions
+
+3. **"mission MIS-XXX"**
+   - Read the corresponding file in `missions/`
+   - Confirm current state and wait for instructions
+
+4. **"[new mission: identifier]"**
+   - Wait for exhaustive description from the user
+   - Propose classification (Priority, Type, Parent, Dependencies)
+   - Only after user validation, create the file
+   - Register in MEMORY.md (Catalog always, Roadmap only if P1/P2)
+   - Register signal in SIGNAL_REGISTRY.md (organic creation)
+
+5. **"reclassify MIS-XXX [new priority/type]"**
+   - Update METADATA in the mission file
+   - If promoted to P1-P2: add to Roadmap
+   - If demoted from P1-P2: remove from Roadmap, keep in Catalog
+
+6. **"mission status"** or **"mission summary"**
+   - Read MEMORY.md sections 9 and 10
+   - Present executive summary: active roadmap + catalog statistics
+
+7. **"roadmap"**
+   - Read MEMORY.md section 9
+   - Present only the active roadmap (P1-P2)
+
+---
+
+## Update methodology
+
+- **Mission files**: Update checks `[x]`, milestones, and progress log on each advance
+- **MEMORY.md Roadmap (Section 9)**: Update when a P1/P2 mission changes state or phase
+- **MEMORY.md Catalog (Section 10)**: Update when any mission is created or changes classification
+- **MEMORY.md General (Sections 1-8)**: Update ONLY when a reached milestone affects global state
+- **Signal Registry**: Update when signals are emitted (create, pause, wait, resume, complete)
+- **SBS Beacons**: When updating any file, verify and update existing beacons if content has changed
+
+---
+
+## Directory structure
+
+```
+{{PROJECT_ROOT}}/
+├── COGNIDOC.md                    <- This file (protocol — auto-read by LLM)
+├── MEMORY.md                      <- General project memory
+├── SIGNAL_REGISTRY.md             <- Signal registry (process states)
+└── missions/                      <- Individual mission memories
+    ├── mis-XXX-slug.md            <- Flat mission (no sub-missions)
+    └── mis-XXX-slug/              <- Mission promoted to folder (with sub-missions)
+        ├── mis-XXX-slug.md        <- Main mission file
+        └── mis-YYY-sub.md         <- Sub-mission (BRANCH)
+```
+
+### File-to-folder promotion
+
+- Every new mission starts as a flat file: `mis-XXX-slug.md`
+- When a mission receives its first BRANCH sub-mission:
+  1. Create folder `mis-XXX-slug/`
+  2. Move the file inside: `mis-XXX-slug/mis-XXX-slug.md`
+  3. Create the sub-mission inside: `mis-XXX-slug/mis-YYY-sub.md`
+- Maximum nesting: 3 levels
+- IDs are always global sequential (MIS-001, MIS-002...), never nested
+
+---
+
+## Fundamental principles
+
+1. Mission files and MEMORY.md are the ABSOLUTE TRUTH of the project state
+2. All information must be exhaustive, precise, and of professional forensic quality
+3. Narratives must be comprehensible by an LLM without prior context
+4. Never simplify, summarize, or cut information from these files
+5. Each mission file is an independent modular piece but fundamental to the complete system
+6. The Active Roadmap (Section 9) is the critical path — P1 and P2 missions only
+7. The Complete Catalog (Section 10) is the total inventory — all missions without exception
+8. Every mission, regardless of priority, is registered and classified with equal documentary excellence
+9. SBS beacons are cognitive infrastructure: maintain, update, and propagate them with the same discipline as the content they annotate
+10. The CPA protocol is the default operational pipeline for EVERY request

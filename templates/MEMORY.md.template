@@ -1,0 +1,200 @@
+# {{PROJECT_NAME}} — Project Memory v{{VERSION}}
+
+<!-- [*(COG.W1.DEF>S1)*] CogniDoc Cognitive Memory Template -->
+<!-- Generated: {{DATE}} | CogniDoc System -->
+
+---
+
+## Section 1 — Project Identity [*(COG.W1.DEF>S1)*]
+
+<!-- Replace the placeholders below with your project's identity. -->
+
+**Project:** {{PROJECT_NAME}}
+**Mission:** *Describe what this project exists to accomplish.*
+**Owner:** {{OWNER}}
+**Created:** {{DATE}}
+
+### Core Principles
+
+<!-- List 3-7 guiding principles that govern decisions in this project. -->
+
+1. *Principle one — e.g., "Code is the source of truth; documentation reflects it faithfully."*
+2. *Principle two*
+3. *Principle three*
+
+---
+
+## Section 2 — Technology Stack [*(ARQ.W2.DEF>S2)*]
+
+<!-- Fill in the technologies your project uses. Add or remove rows as needed. -->
+
+| Layer | Technology | Version | Purpose |
+|-------|-----------|---------|---------|
+| Language | | | |
+| Framework | | | |
+| Database | | | |
+| Cache | | | |
+| CI/CD | | | |
+| Hosting | | | |
+| Other | | | |
+
+---
+
+## Section 3 — Architecture [*(ARQ.W1.DEF>S3)*]
+
+<!-- Describe your project's high-level architecture: layers, patterns, structure. -->
+
+**Pattern:** *e.g., Monolith, Microservices, Modular Monolith, Serverless*
+
+**Layers:**
+
+<!-- List the logical layers of your system. Example: -->
+<!-- 1. Presentation — UI, templates, static assets -->
+<!-- 2. Application — business logic, services -->
+<!-- 3. Data — persistence, caching, event bus -->
+
+*Describe your architecture here.*
+
+**Directory Structure:**
+
+```
+{{PROJECT_ROOT}}/
+├── src/            <!-- Adapt to your project layout -->
+├── tests/
+├── docs/
+└── memory/
+    ├── MEMORY.md
+    ├── SIGNAL_REGISTRY.md
+    └── missions/
+```
+
+---
+
+## Section 4 — Current State [*(COG.W1.DEF>S4)*]
+
+| Metric | Value |
+|--------|-------|
+| Version | {{VERSION}} |
+| Phase | *e.g., Alpha, Beta, Production* |
+| Source files | *count* |
+| Lines of code | *count* |
+| Endpoints/Routes | *count* |
+| Tests | *count* |
+| Active missions | *count* |
+
+---
+
+## Section 5 — Architecture Detail [*(ARQ.W2.DEF>S5)*]
+
+<!-- Provide deeper architectural documentation: data flow, integration points, -->
+<!-- service boundaries, deployment topology, or domain model details. -->
+<!-- This section grows as the project matures. -->
+
+*Expand on Section 3 with implementation-level detail here.*
+
+---
+
+## Section 6 — History [*(COG.W2.DEF>S6)*]
+
+<!-- Record completed phases, milestones, and significant events chronologically. -->
+<!-- Format: date, event, impact. -->
+
+| Date | Event | Impact |
+|------|-------|--------|
+| {{DATE}} | Project memory initialized | Cognitive documentation system active |
+
+---
+
+## Section 7 — Key Decisions [*(COG.W2.DEC>S7)*]
+
+<!-- Record architectural and strategic decisions using ADR-style entries. -->
+
+| ID | Date | Decision | Rationale | Status |
+|----|------|----------|-----------|--------|
+| DEC-001 | {{DATE}} | *What was decided* | *Why it was decided* | Active |
+
+---
+
+## Section 8 — Lessons Learned [*(COG.W3.DEF>S8)*]
+
+<!-- Capture knowledge gained from experience: what worked, what didn't, patterns to repeat or avoid. -->
+
+*No lessons recorded yet. Add entries as the project evolves.*
+
+---
+
+## Section 9 — Active Roadmap (P1-P2 Only) [*(COG.W1.DEF>S9)*]
+
+<!-- Only P1 (Critical) and P2 (High) missions appear here. -->
+<!-- This is the critical path — what the team is actively working on. -->
+
+<!-- Example entry format:
+### MIS-001 — Mission Title (P1 | ROOT | ACTIVE)
+- **Phase:** 2/4 — Phase Name
+- **Progress:** 45%
+- **Next:** Description of the immediate next step
+- **Depends on:** MIS-XXX (if any)
+-->
+
+*No active roadmap missions yet.*
+
+---
+
+## Section 10 — Complete Catalog [*(COG.W1.DEF>S10)*]
+
+<!-- Every mission is registered here regardless of priority. -->
+<!-- Organized by type. Each entry links to its mission file in memory/missions/. -->
+
+### ROOT Missions
+
+<!-- Core missions on the main development line. -->
+
+<!-- Example:
+| ID | Name | Priority | State | File |
+|----|------|----------|-------|------|
+| MIS-001 | Mission Name | P1 | Active | missions/mis-001-slug.md |
+-->
+
+| ID | Name | Priority | State | File |
+|----|------|----------|-------|------|
+| | | | | |
+
+### BRANCH Missions
+
+<!-- Sub-missions that are children of a ROOT or another BRANCH mission. -->
+
+| ID | Name | Parent | Priority | State | File |
+|----|------|--------|----------|-------|------|
+| | | | | | |
+
+### SATELLITE Missions
+
+<!-- Independent parallel missions, not on the critical path. -->
+
+| ID | Name | Priority | State | File |
+|----|------|----------|-------|------|
+| | | | | |
+
+### NOTE Missions
+
+<!-- Embryonic ideas for the future, minimal scope defined. -->
+
+| ID | Name | Priority | File |
+|----|------|----------|------|
+| | | | |
+
+### Completed Missions
+
+<!-- Missions moved here upon completion. Immutable historical record. -->
+
+| ID | Name | Type | Completed | File |
+|----|------|------|-----------|------|
+| | | | | |
+
+---
+
+<!-- FOOTER [*(COG.W1.DEF>S1)*] -->
+<!-- Keep these counters updated on every commit. -->
+
+**{{PROJECT_NAME}}** | v{{VERSION}} | Memory updated: {{DATE}}
+Missions: 0 total (0 ROOT, 0 BRANCH, 0 SATELLITE, 0 NOTE) | Signals: 0 | Handshakes: 0
