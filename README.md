@@ -51,7 +51,7 @@ See `docs/getting-started.md` for setup instructions per LLM type.
 
 ---
 
-## Quickstart (60 seconds)
+## Quickstart (5 minutes)
 
 ```bash
 # 1. Clone the repo

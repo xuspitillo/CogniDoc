@@ -20,7 +20,7 @@
 | Related missions | — |
 | Dependencies | — |
 | File | missions/mis-XXX-slug.md |
-| Beacon | [*(DOM.W.DEF>MIS-XXX)*] |
+| Beacon | `[*(DOM.W.DEF>MIS-XXX)*]` |
 
 ## Mission Description
 

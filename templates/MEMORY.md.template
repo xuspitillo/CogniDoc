@@ -59,13 +59,11 @@
 
 ```
 {{PROJECT_ROOT}}/
-├── src/            <!-- Adapt to your project layout -->
-├── tests/
-├── docs/
-└── memory/
-    ├── MEMORY.md
-    ├── SIGNAL_REGISTRY.md
-    └── missions/
+├── COGNIDOC.md          <!-- Bootloader (auto-read by LLMs at session start) -->
+├── MEMORY.md            <!-- This file (project memory) -->
+├── SIGNAL_REGISTRY.md   <!-- Process state tracker -->
+├── missions/            <!-- Individual mission files -->
+└── ...                  <!-- Your project files (src/, tests/, docs/, etc.) -->
 ```
 
 ---
@@ -143,7 +141,7 @@
 ## Section 10 — Complete Catalog [*(COG.W1.DEF>S10)*]
 
 <!-- Every mission is registered here regardless of priority. -->
-<!-- Organized by type. Each entry links to its mission file in memory/missions/. -->
+<!-- Organized by type. Each entry links to its mission file in missions/. -->
 
 ### ROOT Missions
 
