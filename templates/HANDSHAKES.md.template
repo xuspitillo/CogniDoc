@@ -11,10 +11,23 @@
 <!--
 Append one row per handshake generated.
 
+The Commit column is OPTIONAL. The handshake is generated and committed in a single
+operation, so the commit hash is unknown at the moment the handshake itself is being
+authored. Three valid conventions, choose one and stay consistent:
+
+- Leave blank ( | ) — accepted; the handshake's chronological position in the index
+  plus its filename's date is enough for navigation.
+- "(pending)" — placeholder that signals "to be filled by the next handshake or by a
+  post-commit hook".
+- The actual short commit hash (e.g., "abc1234") — populated by an adopter that runs
+  a post-commit hook that updates HANDSHAKES.md after `git commit` returns the hash.
+
+Whichever convention is chosen, do NOT block the commit waiting for the hash.
+
 | HS | Date | Title | Commit |
 |----|------|-------|--------|
 | HS-001 | YYYY-MM-DD | Initial release foundation | abc1234 |
-| HS-002 | YYYY-MM-DD | Auth system phase 1 complete | def5678 |
+| HS-002 | YYYY-MM-DD | Auth system phase 1 complete | (pending) |
 -->
 
 | HS | Date | Title | Commit |
@@ -42,7 +55,7 @@ Alphabetical ordering of files equals chronological ordering of handshakes.
 
 1. **Immutable.** Once committed, a handshake file is never modified. Corrections go into the next handshake.
 2. **Continuous.** The set HS-001..HS-N has no gaps.
-3. **Pre-commit generation.** A handshake is generated BEFORE every commit that changes project content. See `specs/PHS-v1.0.md`.
+3. **Pre-commit generation.** A handshake is generated BEFORE every commit that changes project content. The protocol is defined in your project's bootloader (COGNIDOC.md, "Project Handshake System" section); upstream specification: https://github.com/xuspitillo/CogniDoc/blob/main/specs/PHS-v1.0.md
 4. **Atomic propagation.** Generating handshake HS-NNN updates this index AND `MEMORY.md` footer counter BEFORE the commit. The developer commits only after the agent confirms the propagation is complete.
 
 ---

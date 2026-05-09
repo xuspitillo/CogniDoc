@@ -51,7 +51,7 @@ sed \
 echo "[2/5] Creating project memory (MEMORY.md)..."
 sed \
     -e "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" \
-    -e "s/{{VERSION}}/0.2.0/g" \
+    -e "s/{{VERSION}}/0.2.1/g" \
     -e "s/{{DATE}}/$DATE_TODAY/g" \
     -e "s/{{OWNER}}/$PROJECT_NAME team/g" \
     -e "s|{{PROJECT_ROOT}}|.|g" \

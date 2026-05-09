@@ -45,6 +45,25 @@ PAUSED <---------- ACTIVE ----------> WAITING
 
 Invalid transitions (e.g., PAUSED to COMPLETED, WAITING to COMPLETED) must pass through ACTIVE first.
 
+### 1.2 Birth State and Dependencies
+
+**Every mission is born ACTIVE.** No mission is ever created directly in PAUSED, WAITING, COMPLETED, or EVOLUTION state. The organic creation signal always produces an `ACTIVE` initial state with a single history entry: `Created → ACTIVE`.
+
+When a mission is created with unresolved dependencies (i.e., it cannot actually progress because another mission must complete first), the bootloader's `new mission` workflow MUST emit a separate, explicit `[[wait X]]` signal **immediately after** creation. This produces two distinct, sequential history entries in the SIG:
+
+```
+| Date       | Signal  | Previous State | New State | Reason                                |
+|------------|---------|----------------|-----------|---------------------------------------|
+| YYYY-MM-DD | Created | —              | ACTIVE    | Mission created with scope and goals |
+| YYYY-MM-DD | Wait    | ACTIVE         | WAITING   | Blocked by MIS-XXX (dependency)      |
+```
+
+Direct creation in WAITING state — i.e., a single history row showing `Created → WAITING` or a fabricated synthetic transition `Created → ACTIVE → Wait → WAITING` collapsed into the creation step — is **invalid**. It compromises audit-trail integrity: the PSS history must reflect signals that were actually emitted, not implied or inferred.
+
+The same principle applies to PAUSED: a mission is never born PAUSED. To begin a mission already paused, create it ACTIVE and immediately emit `[[pause X]]`.
+
+This rule applies to LLM agents implementing PSS: when a user creates a mission with dependencies, the agent must emit two signals (one organic, one explicit) and produce two history entries. Combining them into a single phantom transition is a protocol violation.
+
 ---
 
 ## 2. Signals

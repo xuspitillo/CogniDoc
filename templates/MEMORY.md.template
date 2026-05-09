@@ -24,7 +24,7 @@
 
 ---
 
-## Section 2 — Technology Stack [*(ARQ.W2.DEF>S2)*]
+## Section 2 — Technology Stack [*(ARC.W2.DEF>S2)*]
 
 <!-- Fill in the technologies your project uses. Add or remove rows as needed. -->
 
@@ -40,7 +40,7 @@
 
 ---
 
-## Section 3 — Architecture [*(ARQ.W1.DEF>S3)*]
+## Section 3 — Architecture [*(ARC.W1.DEF>S3)*]
 
 <!-- Describe your project's high-level architecture: layers, patterns, structure. -->
 
@@ -82,7 +82,7 @@
 
 ---
 
-## Section 5 — Architecture Detail [*(ARQ.W2.DEF>S5)*]
+## Section 5 — Architecture Detail [*(ARC.W2.DEF>S5)*]
 
 <!-- Provide deeper architectural documentation: data flow, integration points, -->
 <!-- service boundaries, deployment topology, or domain model details. -->
@@ -106,10 +106,13 @@
 ## Section 7 — Key Decisions [*(COG.W2.DEC>S7)*]
 
 <!-- Record architectural and strategic decisions using ADR-style entries. -->
+<!-- Example row (delete or replace as you record real decisions):
+| DEC-001 | YYYY-MM-DD | What was decided | Why it was decided | Active |
+-->
 
 | ID | Date | Decision | Rationale | Status |
 |----|------|----------|-----------|--------|
-| DEC-001 | {{DATE}} | *What was decided* | *Why it was decided* | Active |
+|    |      |          |           |        |
 
 ---
 
@@ -193,8 +196,10 @@
 
 <!-- FOOTER [*(COG.W1.DEF>S1)*] -->
 <!-- Keep these counters updated on every commit. -->
-<!-- The "Handshakes" counter MUST be incremented as part of the PHS pre-commit cascade,
-     before the developer commits. See specs/PHS-v1.0.md. -->
+<!-- The "Handshakes" counter MUST be incremented as part of the PHS pre-commit
+     cascade, before the developer commits. The PHS protocol is defined in your
+     project's bootloader (COGNIDOC.md, "Project Handshake System" section). For
+     the upstream specification, see https://github.com/xuspitillo/CogniDoc -->
 
 **{{PROJECT_NAME}}** | v{{VERSION}} | Memory updated: {{DATE}}
 Missions: 0 total (0 ROOT, 0 BRANCH, 0 SATELLITE, 0 NOTE) | Signals: 0 | Handshakes: 0 (latest: —)

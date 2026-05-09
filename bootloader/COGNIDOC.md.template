@@ -4,7 +4,46 @@ This file is the **bootloader** of your project's cognitive documentation system
 Every LLM session begins by reading this file. It defines how the LLM navigates,
 updates, and verifies your project's living memory.
 
-**Powered by CogniDoc v0.2.0** — https://github.com/{{ORG}}/cognidoc
+**Powered by CogniDoc v0.2.1** — https://github.com/{{ORG}}/cognidoc
+
+---
+
+## Operating Mode (Filesystem-Capable vs Chat-Based)
+
+This bootloader is read by LLMs of two kinds. The protocols are identical for both;
+only the mechanism of reading and writing files differs.
+
+- **Filesystem-capable** (Claude Code, Cursor, Windsurf, Cline, Aider, IDE integrations):
+  the LLM can read and write files in the project directly. "Read MEMORY.md" means open
+  the file. "Update mission file" means edit it.
+
+- **Chat-based without filesystem access** (ChatGPT, Claude.ai web, Gemini, local LLMs
+  without tool access, API integrations without file tools): the LLM operates on a
+  snapshot of the project that was bundled into its context (typically via
+  `tools/context.sh`). "Read X" means consult the section of the bundle corresponding
+  to X. "Update X" means propose new content for the user to apply manually — the
+  LLM cannot modify files.
+
+### Rules for chat-based mode (apply automatically when filesystem is unavailable)
+
+1. **Treat every "Read X" instruction as "consult the X section of the bundled context"**.
+   No filesystem access is needed to follow the protocol.
+2. **For every "Update X" or content modification**, return the new content as a code
+   block clearly labeled with the target file. Do not claim the file was modified.
+3. **Specify the exact paste location for every edit.** State:
+   - The target file path (e.g., `MEMORY.md`, `missions/mis-001-slug.md`).
+   - The location anchor (e.g., "replace the entire `## Section 10 — Complete
+     Catalog` block, from the `## Section 10` heading down to the next `---`
+     separator on its own line"; or "append this row to the table under `## Progress
+     Log`, after the last existing row").
+   - Whether the operation is REPLACE, INSERT-AFTER, INSERT-BEFORE, or APPEND.
+   Vague instructions like "add this to the progress log" cause non-expert users to
+   accidentally duplicate sections or paste into the wrong location. Always be specific.
+4. **After every edit, ask the user to confirm "done"** before proposing the next
+   change. This keeps the agent's mental model in sync with the actual files (which
+   the agent cannot re-read).
+5. **At the end of any session that produced edits**, summarize the net changes so
+   the user can verify nothing was missed.
 
 ---
 

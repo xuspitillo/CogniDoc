@@ -15,15 +15,21 @@ git clone https://github.com/xuspitillo/CogniDoc.git /tmp/cognidoc
 /tmp/cognidoc/tools/init.sh ~/my-project "My Project"
 ```
 
-The script creates the directory structure, copies templates, and replaces common placeholders automatically.
+The script **creates the target directory if it does not exist**. You do not need to
+`mkdir` or `cd` into it beforehand — pass any path you want as the first argument and
+the script handles the rest. After the script finishes, you can `cd` into that
+directory to continue. The script copies templates, generates `COGNIDOC.md`,
+`MEMORY.md`, `SIGNAL_REGISTRY.md`, `HANDSHAKES.md`, and the `missions/` and
+`handshakes/` skeletons, and replaces common placeholders automatically.
 
 ### Option B: Manual setup
 
 1. Copy `bootloader/COGNIDOC.md.template` to your project root as `COGNIDOC.md`
 2. Copy `templates/MEMORY.md.template` as `MEMORY.md`
 3. Copy `templates/SIGNAL_REGISTRY.md.template` as `SIGNAL_REGISTRY.md`
-4. Create a `missions/` directory
-5. Replace all `{{PLACEHOLDERS}}` with your project's values
+4. Copy `templates/HANDSHAKES.md.template` as `HANDSHAKES.md`
+5. Create empty `missions/` and `handshakes/` directories
+6. Replace all `{{PLACEHOLDERS}}` with your project's values
 
 ## Step 2 --- Customize the bootloader (2 minutes)
 
