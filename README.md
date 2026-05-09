@@ -114,6 +114,7 @@ The CogniDoc protocol specifications, templates, and tooling in this repository 
 **Version:** 0.2.1 — Public Alpha
 **Stability:** Specifications are stable. Templates and tooling may evolve based on early adopter feedback.
 **Origin:** CogniDoc was developed and validated internally at LIGHT Corp before being extracted for public release.
+**Built with:** Anthropic Claude Code, under human direction (project lead: [@xuspitillo](https://github.com/xuspitillo)). Protocol design, architectural decisions, and end-to-end adoption testing are human-supervised; mechanical commit authorship in `git log` mostly reflects the sandbox identity (`Claude <noreply@anthropic.com>`) used during implementation.
 
 ---
 
