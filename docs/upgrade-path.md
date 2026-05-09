@@ -2,98 +2,49 @@
 
 ## What you have now (Tier 1: Foundation)
 
-The open-source foundation includes: a bootloader (`COGNIDOC.md` template), memory file templates, five protocol specifications (SBS navigation, PSS state tracking, CPA operational pipeline, Mission Classification, PHS handshakes), working examples, and lightweight tooling. Free under Apache 2.0. Works with any LLM.
+The open-source foundation of CogniDoc. Five protocol specifications (SBS navigation, PSS state tracking, CPA operational pipeline, Mission Classification, PHS handshakes), templates, three reference examples, and lightweight shell tooling. Apache 2.0. Bring-your-own-LLM.
 
-## The upgrade path
+**This is the only release that ships today.** Everything below is roadmap, not product.
 
-> **Status notice:** Tier 1 (this repository) is the only release shipping today. **Tiers 2 through 6 described below are in development and not yet available.** This page documents the long-term roadmap and design intent for higher tiers — treat it as direction and scope reservation, not as a product catalog. The descriptions are stable enough to inform a "should I build for T1 or wait for T2?" decision; pricing, exact feature lists, and ship dates are not yet committed.
+---
 
-CogniDoc is designed as a progressive system. Each tier adds capabilities while remaining backward-compatible with everything you already have.
+## Future tiers — honest status
 
-### Tier 2: Starter — "The System + Manual" *(in development)*
+Higher tiers are in **private development**. They will turn the protocol from convention into machine-enforced infrastructure: a programmatic library that parses, validates, and propagates CogniDoc artifacts; a generator that compiles project documentation into other formats; and possibly hosted services for teams.
 
-What it adds:
+**There is currently:**
 
-- **Validated Python library (core)**: beacon parser, signal state machine, memory parser. Not grep scripts — tested, production-validated modules with proper error handling.
-- **Auto-updating PDF manual generator**: professional documentation that rebuilds automatically when your project changes. Chapters, table of contents, headers/footers, enterprise formatting.
-- **Customizable SBS domains**: full flexibility to define project-specific semantic domains with validation.
+- No committed timeline
+- No public roadmap with feature lists
+- No beta program
+- No signup form
+- No commercial offering
+- No paid plan
 
-Who it's for: Individual developers or small teams who want programmatic validation and professional documentation output.
+If you want to be notified when something becomes available, watch this repository on GitHub. Every release ships through this repo.
 
-### Tier 3: Professional — "The Complete System" *(in development)*
+---
 
-What it adds:
+## Compatibility commitment
 
-- **Full Python library (7 modules)**: adds mission parser, propagation validator, mission classifier, and CPA planner. Complete programmatic toolkit for cognitive document management.
-- **Assisted onboarding**: expert configuration of CogniDoc for your specific project and domain.
-- **Cross-document audit**: programmatic verification that all documents are coherent with each other and with reality.
-- **Configurable cognitive interface**: conversational widget adapted to your domain and workflow.
+The Tier 1 templates, specifications, and tooling are designed to remain stable and backward-compatible as future tiers ship. A project that adopts Tier 1 today should remain valid under any future Tier 2+ release without rewriting `MEMORY.md`, mission files, signal entries, or handshakes. If a future release ever requires a migration, it will ship a migration script and a clear upgrade note in the changelog.
 
-Who it's for: Teams that need verified coherence, professional setup, and support.
-
-### Tier 4: Professional Plus — "The System + Local AI" *(in development)*
-
-What it adds:
-
-- **Fine-tuned LLM model**: a language model specifically trained on the CogniDoc protocol and your project domain. Runs locally on your hardware.
-- **Native protocol execution**: the model doesn't follow CogniDoc instructions — it has internalized them. The difference between reading a map and knowing the territory.
-- **No recurring API costs**: the model runs on your GPUs with no external dependencies.
-
-Who it's for: Organizations with GPU infrastructure that want specialized AI without cloud dependency.
-
-### Tier 5: Enterprise — "System + SaaS AI by Niche" *(in development)*
-
-What it adds:
-
-- **API access to specialized models**: hosted models fine-tuned per industry (legal, healthcare, finance, engineering).
-- **Voice-enabled cognitive interface**: interact with your system using natural language (STT + TTS).
-- **Per-niche specialization**: the model understands your industry's terminology, workflows, and constraints before you start.
-- **Annual membership**: predictable costs, included support, regular model updates.
-
-Who it's for: Organizations that want expert AI without managing GPU infrastructure.
-
-### Tier 6: Enterprise Premium — "The Dedicated Suite" *(in development)*
-
-What it adds:
-
-- **Exclusive fine-tuned model**: trained on your data under strict NDA. Not shared with other clients.
-- **Model that knows your company**: your terminology, your processes, your organizational structure.
-- **Included updates**: the model evolves as your company evolves.
-- **White-glove support**: dedicated team, fastest SLA.
-
-Who it's for: Organizations where the cost of error is high and the value of specialized AI justifies premium investment.
-
-## Comparison table
-
-| Feature | T1 | T2 | T3 | T4 | T5 | T6 |
-|---|---|---|---|---|---|---|
-| Core system (bootloader + memory + protocols) | Yes | Yes | Yes | Yes | Yes | Yes |
-| SBS navigation | Spec only | Validated parser | Full toolkit | Native in model | Native in model | Native in model |
-| PDF manual generator | - | Yes | Yes | Yes | Yes | Yes |
-| Python library | - | 3 core modules | 7 modules | 7 modules | 7 modules | 7 modules |
-| Onboarding | Self-service | Self-service | Assisted | Assisted | Assisted | Dedicated |
-| LLM included | - | - | - | Local fine-tuned | Hosted fine-tuned | Exclusive fine-tuned |
-| Niche specialization | - | - | - | Your domain | Industry vertical | Your company |
-| Exclusive model | - | - | - | - | - | Yes (NDA) |
-| Voice interface | - | - | - | - | Yes | Yes |
-| Support | Community | Community | Email | Email + priority | Included | White-glove |
-
-## How to upgrade
-
-- **T1** is always available in this repository (open source, Apache 2.0).
-- **T2+**: visit the [CogniDoc repository](https://github.com/xuspitillo/CogniDoc) for updates on T2+ availability.
-- All tiers are backward-compatible: your existing `COGNIDOC.md`, `MEMORY.md`, and mission files work unchanged.
+---
 
 ## FAQ
 
-### "Will my T1 setup break if I upgrade?"
+### "When will Tier 2 be available?"
 
-No. Higher tiers add capabilities; they don't change the foundation. Your existing files, protocols, and workflows remain intact.
+No date. Watch the repository.
 
-### "Can I skip tiers?"
+### "Is there a paid plan or enterprise tier I can buy?"
 
-Yes. You can go from T1 to T5 directly if that matches your needs. Each tier is self-contained.
+No. Not today. Whether one will exist in the future is undecided.
 
-### "Is the fine-tuned model based on a specific LLM?"
+### "Can I contribute to Tier 2?"
 
-The base model selection depends on the tier and deployment context. Details are provided during consultation.
+Tier 2 is in private development. Tier 1 (this repository) accepts contributions per [`CONTRIBUTING.md`](../CONTRIBUTING.md): documentation improvements, new reference examples, template enhancements, tooling improvements, and specification clarifications.
+
+### "What was here before?"
+
+Earlier versions of this page (v0.1.x through v0.2.x) listed six tiers (T1 through T6) with detailed feature tables and category labels like "Enterprise Premium" and "Hosted SaaS". That content overstated what is currently in development and read more like a commercial pitch than an honest roadmap. It was removed in v0.3.0 in favor of this honest status. The detailed tier descriptions remain in private notes; if and when any of them become real product, they will be announced through this repository on their own merits.

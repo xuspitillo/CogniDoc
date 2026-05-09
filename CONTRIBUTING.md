@@ -67,9 +67,9 @@ This adds a `Signed-off-by` line to the commit message.
 
 ## Governance
 
-CogniDoc Tier 1 is maintained by LIGHT Corp. Specification changes that affect the public protocol surface (SBS, PSS, CPA, CLASSIFICATION) require maintainer review to ensure backward compatibility with adopters and consistency with higher tiers.
+CogniDoc Tier 1 is currently maintained by the project lead ([@xuspitillo](https://github.com/xuspitillo)) with assistance from contributors. Specification changes that affect the public protocol surface (SBS, PSS, CPA, CLASSIFICATION, PHS) require maintainer review to ensure backward compatibility with adopters and internal consistency. As the contributor base grows, governance will evolve toward a more distributed model documented in this section.
 
-Templates, examples, documentation, and tooling are more flexible and benefit from community contributions.
+Templates, examples, documentation, and tooling are more flexible and benefit from community contributions without spec-level review.
 
 ---
 

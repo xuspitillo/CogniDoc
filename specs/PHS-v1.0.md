@@ -43,20 +43,27 @@ The combined filename ensures alphabetical ordering equals chronological orderin
 
 ### 1.3 File Structure
 
-A handshake file MUST contain the following sections, in order:
+A handshake file is composed of three **REQUIRED** sections plus seven **RECOMMENDED** sections. Required sections must be present in every handshake, even for trivial commits. Recommended sections may be omitted when not applicable to the commit being checkpointed; their absence is not a protocol violation. The intent is to keep the audit trail compact for routine commits while preserving the option for richer narrative when a commit warrants it.
+
+**REQUIRED (always present):**
 
 1. **Title and metadata block** — handshake ID, project name, date, slug, previous-handshake reference.
-2. **Executive Summary** — 1-3 paragraphs. The "what and why" at a glance.
-3. **System State** — current metrics in a table (version, mission counts, signal counts, etc.).
-4. **Advances Since Last Handshake** — narrative description of work completed.
-5. **Files Created / Modified** — table listing every file touched and the type of change.
-6. **Decisions Taken** — architectural, design, or strategic decisions with their rationale.
-7. **Impact on Missions** — table mapping affected missions to state changes.
-8. **Roadmap and Next Steps** — what comes next and any blockers.
-9. **Warnings and Risks** — identified risks, mitigations applied, debt accumulated.
-10. **Context for External Agents** — a self-contained summary for an LLM that reads ONLY this handshake.
+2. **Executive Summary** — at minimum one sentence: what this commit changed and why. For substantive commits, 1-3 paragraphs are appropriate.
+3. **Files Created / Modified** — table listing every file touched and the type of change. This is the audit-trail contract: a handshake without it does not satisfy PHS.
 
-The full template is in `templates/handshakes/_template.md`.
+**RECOMMENDED (include when applicable, omit when not):**
+
+4. **System State** — current metrics in a table. Include when at least one metric changed in this commit.
+5. **Advances Since Last Handshake** — narrative description of work completed. Include for any commit that produced more than a trivial change.
+6. **Decisions Taken** — architectural, design, or strategic decisions with their rationale. Include only if real decisions were taken.
+7. **Impact on Missions** — table mapping affected missions to state changes. Include only if mission state changed.
+8. **Roadmap and Next Steps** — what comes next and any blockers. Include if the roadmap shifted.
+9. **Warnings and Risks** — identified risks, mitigations applied, debt accumulated. Include if new risks were identified.
+10. **Context for External Agents** — a self-contained summary for an LLM that reads ONLY this handshake. Strongly recommended for milestone commits, version releases, and anything an external reader is likely to start from. Optional for routine intermediate commits.
+
+For trivial commits (e.g., a one-line typo fix), a handshake of three sections — title and metadata, one-sentence Executive Summary, and Files Created / Modified — is sufficient and within protocol.
+
+The full template (showing all ten sections with annotations) is in `templates/handshakes/_template.md`. Adopters may delete any of the seven recommended sections from the template when not applicable.
 
 ---
 

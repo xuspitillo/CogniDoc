@@ -1,10 +1,10 @@
 # CogniDoc
 
-**Cognitive documentation infrastructure for LLM-driven projects.**
+**A markdown convention pack for keeping LLM project context coherent across sessions.**
 
-CogniDoc gives a project a persistent memory and navigation layer that any LLM can read at session start and keep up to date as work progresses — across sessions and across team members.
+CogniDoc is a set of protocols, templates, and lightweight shell tools you install at the root of a project. Any LLM that reads markdown — Claude, GPT, Gemini, local models — can read CogniDoc's bootloader at session start, follow the conventions to navigate the project's documentation, update memory as work progresses, and hand off coherent state to the next session.
 
-It is not prompt engineering, not a RAG framework, and not an agent library. It is a documentation and protocol layer those tools operate on top of: a structured representation of what the project knows about itself, expressed in a form an LLM can navigate, update, and keep coherent.
+It is not prompt engineering, not a RAG framework, and not an agent library. It is a documentation and protocol layer those tools operate on top of. The closest comparison is to per-tool convention files (`CLAUDE.md`, `.cursorrules`, `.windsurfrules`, `AGENTS.md`): CogniDoc is **content** you can install in any of those slots — see [`docs/competitive-context.md`](docs/competitive-context.md) for the precise framing.
 
 ---
 
@@ -34,7 +34,7 @@ This is the **public, open-source foundation** of CogniDoc. It contains:
   - **CPA** — Consult-Plan-Autonomy pipeline (how the LLM processes each request)
   - **CLASSIFICATION** — Priority × Type taxonomy for missions
   - **PHS** — Project Handshake System (immutable per-commit narrative checkpoints)
-- **Adoption documentation** (`docs/`) — getting started, concepts, comparisons, glossary.
+- **Adoption documentation** (`docs/`) — getting started, concepts, comparisons (including [where CogniDoc fits vs `CLAUDE.md` / `.cursorrules` / `AGENTS.md`](docs/competitive-context.md)), glossary.
 - **Reference examples** (`examples/`) — three working demos: personal knowledge base, software project, research notes.
 - **Lightweight tooling** (`tools/`) — initialization script, context bundler for non-file-capable LLMs, and basic beacon validator.
 
@@ -97,7 +97,9 @@ CogniDoc does not replace your existing stack. It **organizes** it.
 
 ## Beyond Tier 1
 
-This repository is the **Foundation tier** — public, free, permissively licensed. Commercial tiers with advanced tooling (programmatic libraries, audit systems, fine-tuned models) are in development. See `docs/upgrade-path.md` for details.
+Higher tiers (a programmatic library, validators, generators, and other tooling that turns the protocol from convention into machine-enforced infrastructure) are in private development with **no committed timeline**. They are not part of this distribution and not currently available for purchase, evaluation, or early access. See [`docs/upgrade-path.md`](docs/upgrade-path.md) for the brief honest status.
+
+This repository — Tier 1 — is what ships today.
 
 ---
 
@@ -105,15 +107,15 @@ This repository is the **Foundation tier** — public, free, permissively licens
 
 Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
-The CogniDoc protocol specifications, templates, and tooling in this repository are licensed under Apache 2.0. The CogniDoc name and the validated programmatic implementations of higher tiers are property of LIGHT Corp.
+The CogniDoc protocol specifications, templates, and tooling in this repository are licensed under Apache 2.0. You may use, modify, and redistribute them under those terms.
 
 ---
 
 ## Status
 
-**Version:** 0.2.1 — Public Alpha
-**Stability:** Specifications are stable. Templates and tooling may evolve based on early adopter feedback.
-**Origin:** CogniDoc was developed and validated internally at LIGHT Corp before being extracted for public release.
+**Version:** 0.3.0 — Public Alpha
+**Stability:** Specifications are stable. Templates and tooling may evolve based on real adoption feedback.
+**Origin:** Developed iteratively against real-world LLM workflows (Claude Code, chat-based LLMs, local models) and tested end-to-end with a non-expert user adopting the protocol on a fresh project before public release. The end-to-end test surfaced 11 findings, all closed in [v0.2.1](CHANGELOG.md). Post-launch critical review surfaced additional positioning concerns, addressed in [v0.3.0](CHANGELOG.md).
 **Built with:** Anthropic Claude Code, under human direction (project lead: [@xuspitillo](https://github.com/xuspitillo)). Protocol design, architectural decisions, and end-to-end adoption testing are human-supervised; mechanical commit authorship in `git log` mostly reflects the sandbox identity (`Claude <noreply@anthropic.com>`) used during implementation.
 
 ---
