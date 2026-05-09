@@ -154,6 +154,28 @@ A medium-weight reference beacon that directs the agent to Section 7 only if dee
 
 An evolution beacon documenting an architectural change tied to a specific mission.
 
+### Placement in mission and handshake files
+
+Mission files (`missions/mis-XXX-slug.md`) and handshake files (`handshakes/hs-NNN-YYYY-MM-DD-slug.md`) carry beacons in two specific positions, both **inline and visible to a reader** — never hidden inside an HTML comment.
+
+1. **Next to the file's main heading (level 1)**, expressing what the file *is*. Example for a mission:
+
+   ```markdown
+   # MIS-001 — Define MVP Scope [*(BIZ.W1.DEF>SR.SIG-001 | COG.W1.DEF>S10)*]
+   ```
+
+   The pack beacon signals that this file is the canonical definition of mission MIS-001 (BIZ domain, weight W1) cross-referenced from the signal registry SIG-001 and from the project memory catalog (COG domain, S10).
+
+2. **Inside the metadata block as an explicit `Beacon` field**, when the file follows the metadata-table convention provided by the templates:
+
+   ```markdown
+   | Beacon | `[*(BIZ.W1.DEF>SR.SIG-001)*]` |
+   ```
+
+   The beacon here is wrapped in inline code (backticks) so it renders literally and is not consumed by markdown processors.
+
+**Anti-pattern:** placing the beacon inside an HTML comment (`<!-- [*(...)*] -->`). This hides it from human readers and from the SBS validator, defeating the purpose. If a beacon belongs to the file, expose it in plain markdown next to the heading or in the metadata table.
+
 ---
 
 ## 8. Customization Guide

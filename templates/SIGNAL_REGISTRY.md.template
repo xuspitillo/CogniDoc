@@ -12,7 +12,7 @@
 
 <!--
 Example rows:
-| SIG-001 | MIS-001 | ACTIVE    | Created   | 2025-01-15 | [*(ARQ.W2.SIG>SR.SIG-001)*] |
+| SIG-001 | MIS-001 | ACTIVE    | Created   | 2025-01-15 | [*(ARC.W2.SIG>SR.SIG-001)*] |
 | SIG-002 | MIS-003 | PAUSED    | Pause     | 2025-02-10 | [*(COG.W2.SIG>SR.SIG-002)*] |
 | SIG-003 | MIS-001/P-2 | WAITING | Wait   | 2025-03-01 | [*(SRV.W3.SIG>SR.SIG-003)*] |
 -->
