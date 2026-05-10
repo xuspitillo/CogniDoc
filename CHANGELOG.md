@@ -6,6 +6,103 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [0.3.0] — 2026-05-09
+
+### Changed — Post-launch revision based on critical review
+
+After publishing v0.2.1, a critical review surfaced positioning and tone problems
+that the existing release did not address despite previous audit passes. v0.3.0 is
+the response: a revision that recalibrates the framing of the project from
+"cognitive documentation infrastructure with a six-tier commercial roadmap" to
+"a markdown convention pack for keeping LLM project context coherent across
+sessions, with future tiers in private development under no committed timeline".
+
+The protocols themselves are not changed in any breaking way. Templates,
+specifications, and tooling remain backward-compatible: artifacts authored under
+v0.1.x, v0.2.x continue to validate under v0.3.0. The change is **what the project
+honestly is and how it is presented**, not what it does.
+
+#### Branding and licensing
+
+- **Removed all references to "LIGHT Corp"** from `LICENSE`, `NOTICE`, `README.md`,
+  and any other repo location. The project is now attributed to "The CogniDoc
+  Project Contributors" — a generic placeholder appropriate for a community-
+  contributed open-source repository, leaving the door open to future
+  contributions without locking the project to a specific corporate identity.
+- **Rewrote `NOTICE`** to drop the "registered project name", "internal cognitive
+  infrastructure", and other corporate-flavored framings that did not match the
+  reality of a small protocol pack published under Apache 2.0. The new NOTICE is
+  half the length and accurate.
+- **Rewrote the `Origin` line** in the README Status section. Previously read
+  "developed and validated internally at LIGHT Corp before being extracted for
+  public release". Now reads "developed iteratively against real-world LLM
+  workflows ... and tested end-to-end with a non-expert user adopting the
+  protocol on a fresh project before public release", which is the actual
+  development story.
+
+#### Roadmap honesty
+
+- **Drastically reduced `docs/upgrade-path.md`**. Earlier versions described six
+  tiers (T1 through T6) with detailed feature tables, including categories like
+  "Enterprise Premium" with "exclusive fine-tuned model trained on your data
+  under strict NDA", "white-glove support", and "voice-enabled cognitive
+  interface". For a project that ships protocol specifications and three shell
+  scripts, that content read as commercial pitch rather than honest roadmap.
+  v0.3.0 replaces it with a single short page: T1 ships today, higher tiers
+  are in private development, no timelines, no signup, no paid plan, watch
+  the repo for announcements.
+- **Updated the README "Beyond Tier 1" section** to match: a single paragraph
+  pointing at the shorter `upgrade-path.md`, dropping the "commercial tiers
+  with advanced tooling" framing.
+
+#### Positioning
+
+- **New file `docs/competitive-context.md`** clarifying where CogniDoc sits in
+  the AI-coding-tool ecosystem. The document makes explicit that `CLAUDE.md`,
+  `.cursorrules`, `.windsurfrules`, `AGENTS.md`, and similar per-tool convention
+  files are **slots** (file locations that specific tools auto-read), not
+  competitors of CogniDoc. CogniDoc is content you can install in any of those
+  slots. The real comparison is CogniDoc-installed slot vs ad-hoc-prose slot,
+  and the document includes a concrete table of what each gives you.
+- **Updated README** to point at `docs/competitive-context.md` from the intro
+  and the `What you get` section.
+- **Toned down the README tagline** from "Cognitive documentation infrastructure
+  for LLM-driven projects" to "A markdown convention pack for keeping LLM
+  project context coherent across sessions". The new tagline says what the
+  project does in plain English.
+
+#### Specifications
+
+- **`specs/PHS-v1.0.md` softened.** The previous spec required all 10 sections
+  in every handshake. v0.3.0 marks 3 sections as REQUIRED (Title and metadata,
+  Executive Summary, Files Created / Modified) and the remaining 7 as
+  RECOMMENDED — to be included when applicable, omitted when not. For trivial
+  commits (typo fixes, small edits), a three-section handshake is now within
+  protocol. Substantive commits still benefit from the fuller form. Adopters
+  with handshakes already authored under v0.2.x do not need to change anything;
+  the relaxation is backward-compatible.
+- **`docs/concepts.md` adds a section "Why inline beacons and not YAML
+  frontmatter"** explaining the design trade-off explicitly. Beacons compete
+  with YAML frontmatter as a way to attach metadata to documentation, and the
+  spec should defend its choice rather than leave it implicit.
+
+### Changed
+- **Version bump 0.2.1 → 0.3.0**: minor release per semver. No breaking changes
+  to specifications or templates. The bump reflects substantive documentation
+  rewrites and a softened PHS spec, both visible enough to a returning adopter
+  that the version increment is appropriate.
+- VERSION, README.md, bootloader template, and tools/init.sh updated to 0.3.0.
+
+### Notes
+
+The launch of v0.2.1 happened. v0.3.0 is what was learned from launching: that
+the framing was the weakest part of the release, and that the protocols
+themselves are stronger than their presentation suggested. Adopters of v0.2.x
+do not need to do anything to upgrade; v0.3.0 is a presentation revision plus
+a backward-compatible spec relaxation.
+
+---
+
 ## [0.2.1] — 2026-05-09
 
 ### Fixed — Findings from end-to-end adoption test
