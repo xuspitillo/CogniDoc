@@ -113,7 +113,7 @@ The CogniDoc protocol specifications, templates, and tooling in this repository 
 
 ## Status
 
-**Version:** 0.3.0 — Public Alpha
+**Version:** 0.3.1 — Public Alpha
 **Stability:** Specifications are stable. Templates and tooling may evolve based on real adoption feedback.
 **Origin:** Developed iteratively against real-world LLM workflows (Claude Code, chat-based LLMs, local models) and tested end-to-end with a non-expert user adopting the protocol on a fresh project before public release. The end-to-end test surfaced 11 findings, all closed in [v0.2.1](CHANGELOG.md). Post-launch critical review surfaced additional positioning concerns, addressed in [v0.3.0](CHANGELOG.md).
 **Built with:** Anthropic Claude Code, under human direction (project lead: [@xuspitillo](https://github.com/xuspitillo)). Protocol design, architectural decisions, and end-to-end adoption testing are human-supervised; mechanical commit authorship in `git log` mostly reflects the sandbox identity (`Claude <noreply@anthropic.com>`) used during implementation.

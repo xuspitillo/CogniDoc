@@ -6,6 +6,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [0.3.1] — 2026-05-10
+
+### Added — First production case study and visual assets
+
+This release publishes the first empirical evidence of CogniDoc adoption at production scale, plus the diagram and OG image assets the README references.
+
+- **`docs/case-studies/seed-project.md`** — retrospective case study documenting the original adoption of CogniDoc on the project where the protocols were extracted from. 33 days of intensive use, 41 handshakes, 16 signals, 13 missions over a codebase that grew from ~14K to ~41K LOC of Python (304 API endpoints, 168 source files). Includes 5 wins, 5 honest frictions (with the 41/59 commit-handshake ratio disclosed at 70%), beyond-T1 extensions list (validation modules ~3K LOC validated in 5+ weeks of production), 6-item v0.4 roadmap derived from real friction, and a sanitized HS-015 handshake as Appendix A. Reviewed and approved by the seed-project agent in two rounds before publication.
+- **`docs/img/architecture.svg`** — concept diagram of the CogniDoc protocol flow (LLM session → bootloader → memory/missions/signals/handshakes). Used in README and external posts.
+- **`docs/img/og-image.svg`** — 1200x630 OG image for social sharing of the repository link.
+
+### Changed
+
+- Version bump 0.3.0 → 0.3.1 (patch). VERSION, README.md, bootloader template, and tools/init.sh substitution updated.
+
+### Notes
+
+This is a documentation release. No protocol surface change. No breaking change. v0.3.0 adopters can ignore this version safely; the only upgrade reason is to receive the case study and the visual assets.
+
+---
+
 ## [0.3.0] — 2026-05-09
 
 ### Changed — Post-launch revision based on critical review

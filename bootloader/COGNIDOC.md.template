@@ -4,7 +4,7 @@ This file is the **bootloader** of your project's cognitive documentation system
 Every LLM session begins by reading this file. It defines how the LLM navigates,
 updates, and verifies your project's living memory.
 
-**Powered by CogniDoc v0.3.0** — https://github.com/{{ORG}}/cognidoc
+**Powered by CogniDoc v0.3.1** — https://github.com/{{ORG}}/cognidoc
 
 ---
 
