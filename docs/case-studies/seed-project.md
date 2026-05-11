@@ -1,5 +1,14 @@
 # Case Study: Production Adoption of CogniDoc on a Local AI Platform
 
+> **Note on the project name.** This case study documents adoption between
+> 2026-02-14 and 2026-03-22 under the project's previous name **CogniDoc**.
+> The project was renamed to **MandelDoc** in v0.4.0 (2026-05-11). The body
+> of this case study retains "CogniDoc" throughout because that was the name
+> in use at the time of the events described; rewriting it would falsify the
+> historical record. The protocols, templates, and findings are identical
+> under either name — only the label changed. See `CHANGELOG.md` v0.4.0 for
+> details.
+
 > **Status:** Retrospective case study, written 2026-05-10 against
 > CogniDoc v0.3.0. Documents adoption that took place during
 > 2026-02-14 to 2026-03-22 (33 days of intensive use).

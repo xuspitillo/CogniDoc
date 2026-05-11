@@ -1,6 +1,6 @@
 # TaskFlow API -- Cognitive Memory System
 
-This project uses CogniDoc for structured LLM-assisted development.
+This project uses MandelDoc for structured LLM-assisted development.
 Any LLM operating in this repository MUST follow this protocol.
 
 ---
@@ -105,7 +105,7 @@ Execute the plan:
 
 ```
 taskflow/
-├── COGNIDOC.md            <-- This file (bootloader)
+├── MANDELDOC.md            <-- This file (bootloader)
 ├── MEMORY.md              <-- Project memory
 ├── SIGNAL_REGISTRY.md     <-- Mission state tracking
 ├── HANDSHAKES.md          <-- Handshake index (one per commit)

@@ -1,9 +1,9 @@
-# CogniDoc Example: Software Development Project
+# MandelDoc Example: Software Development Project
 
 ## What This Is
 
-This example shows CogniDoc adopted for **TaskFlow API** -- a RESTful task management
-service built by a small development team (2-3 engineers). It demonstrates how CogniDoc
+This example shows MandelDoc adopted for **TaskFlow API** -- a RESTful task management
+service built by a small development team (2-3 engineers). It demonstrates how MandelDoc
 brings structured cognitive memory to everyday software development.
 
 ## The Scenario
@@ -24,7 +24,7 @@ on user authentication (P1) and planning real-time notifications (P2).
 
 | File | Purpose |
 |------|---------|
-| `COGNIDOC.md` | Bootloader -- configures any LLM to work with this project |
+| `MANDELDOC.md` | Bootloader -- configures any LLM to work with this project |
 | `MEMORY.md` | Project memory -- state, stack, architecture, roadmap, catalog |
 | `SIGNAL_REGISTRY.md` | Signal registry -- atomic state tracking for all missions |
 | `HANDSHAKES.md` | Handshake index -- chronological per-commit checkpoints |
@@ -36,13 +36,13 @@ on user authentication (P1) and planning real-time notifications (P2).
 ## How to Try It
 
 1. Copy this directory into your own project
-2. Adapt `COGNIDOC.md` with your stack, domains, and directory structure
+2. Adapt `MANDELDOC.md` with your stack, domains, and directory structure
 3. Fill `MEMORY.md` with your project's real state
 4. Create mission files for your active features
-5. Point your LLM at `COGNIDOC.md` and start working
+5. Point your LLM at `MANDELDOC.md` and start working
 
 ## Key Insight
 
-CogniDoc is not documentation -- it is cognitive infrastructure. Your LLM does not just
+MandelDoc is not documentation -- it is cognitive infrastructure. Your LLM does not just
 read your code; it understands your project's history, decisions, and direction. Every
 session starts with context, not from zero.

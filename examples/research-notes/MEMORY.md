@@ -16,10 +16,10 @@
 
 | Component | Tool | Purpose |
 |-----------|------|---------|
-| Notes & memory | Markdown + CogniDoc | Structured research memory, synthesis, gap tracking |
+| Notes & memory | Markdown + MandelDoc | Structured research memory, synthesis, gap tracking |
 | Reference management | Zotero | Bibliographic data, PDF storage, citation export |
 | Analysis scripts | Python 3.11 | Quantitative analysis, table generation, figure plotting |
-| LLM assistant | Any (Claude, GPT, etc.) | Research support via CogniDoc protocol |
+| LLM assistant | Any (Claude, GPT, etc.) | Research support via MandelDoc protocol |
 | Version control | Git | Track evolution of notes, synthesis, and analysis |
 
 ---

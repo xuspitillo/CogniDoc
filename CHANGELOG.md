@@ -1,8 +1,101 @@
 # Changelog
 
-All notable changes to CogniDoc Tier 1 (Foundation) are documented in this file.
+All notable changes to MandelDoc Tier 1 (Foundation) are documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+> **Historical note.** Versions 0.1.0 through 0.3.1 were published under the project's
+> previous name **CogniDoc**. Entries below for those versions intentionally preserve
+> "CogniDoc" as a factual record of how the project was named at the time. The rename
+> to MandelDoc happens in v0.4.0; from that version forward, all surfaces (file names,
+> URLs, copy) use MandelDoc.
+
+---
+
+## [0.4.0] — 2026-05-11
+
+### Changed — Project renamed: CogniDoc → MandelDoc
+
+The project was renamed from "CogniDoc" to "MandelDoc" after research surfaced
+multiple name collisions in the AI / documentation tooling space (notably
+`@cognidocs` on npm, an unrelated commercial product "Cognidox", and several
+"Cogni-*" companies in adjacent verticals). The rename was executed while the
+public footprint is still small (no external stars, no forks, no dependents) so
+the migration cost is contained. The protocols, templates, spec contracts, and
+file structures are otherwise unchanged.
+
+#### Rename scope
+
+- All references to `CogniDoc`, `cognidoc`, `COGNIDOC` in source files, docs,
+  examples, templates, tools, and CI configuration are replaced by `MandelDoc`,
+  `mandeldoc`, `MANDELDOC`.
+- The bootloader template is renamed `bootloader/COGNIDOC.md.template` →
+  `bootloader/MANDELDOC.md.template`. `tools/init.sh` now generates `MANDELDOC.md`
+  in adopter projects (was `COGNIDOC.md`).
+- The example bootloaders under `examples/*/COGNIDOC.md` are renamed to
+  `examples/*/MANDELDOC.md` with content updated to match.
+- The GitHub repository is renamed from `xuspitillo/CogniDoc` to
+  `xuspitillo/MandelDoc` (GitHub auto-redirects the old URL).
+
+#### Historical fidelity preserved
+
+- The CHANGELOG entries for v0.1.0–v0.3.1 retain the original "CogniDoc"
+  wording. They are factual records of how the project was named at the time
+  of each release; rewriting them would falsify history.
+- The seed-project case study (`docs/case-studies/seed-project.md`) retains
+  "CogniDoc" in its body because it documents real adoption that occurred
+  between 2026-02-14 and 2026-03-22 under that name. A brief note at the top
+  of the case study clarifies the rename.
+
+### Added — v0.4.0 roadmap items from the seed-project case study
+
+The seed-project case study (`docs/case-studies/seed-project.md`,
+"What MandelDoc T1 should learn from this adoption") enumerated six concrete
+priorities derived from production friction. v0.4.0 closes them:
+
+1. **Tiered handshake depth by commit size** — `specs/PHS-v1.0.md` gains a new
+   §1.4 that explicitly maps commit size (trivial / routine / substantive /
+   milestone) to recommended handshake depth (3-section minimum to all-10).
+   The "every commit gets the full audit" framing in the bootloader is gone;
+   ceremony now scales with semantic impact.
+2. **Honest commit-handshake ratio messaging** — already addressed in v0.3.0
+   PHS §3.2 "What Counts as a Commit"; verified and consistent in v0.4.0.
+3. **Bootloader leanness as a hard rule** — the bootloader template
+   (`bootloader/MANDELDOC.md.template`) now declares a 500-line ceiling at the
+   top of the file. Future edits that would exceed it must move content into a
+   spec file.
+4. **Record of Propagation formally specified** — new spec
+   `specs/ROP-v1.0.md` defines the ROP table format, the propagation ritual,
+   and the criteria for which values belong in the table. The validator
+   tooling that consumes a ROP table is explicitly out of v1.0 scope.
+5. **Snapshot discipline pattern documented** — new doc
+   `docs/patterns/snapshot-discipline.md` describes the
+   `*(snapshot YYYY-MM-DD)*` convention for historical metric entries in
+   progress logs and handshake narratives, and clarifies the interaction with
+   ROP propagation.
+6. **Evolution pattern for completed signals** — already documented in
+   `specs/PSS-v1.0.md` §1 (state machine row) and §5 (Evolution Pattern).
+   No spec change in v0.4.0; the case-study finding was already addressed.
+
+### Changed
+
+- `VERSION` bumped 0.3.1 → 0.4.0.
+- `README.md` Status block now shows v0.4.0 and includes a brief "Previous name"
+  line for adopters who encounter the project via the old name.
+- `bootloader/MANDELDOC.md.template` header version updated to 0.4.0 and gains
+  the bootloader-leanness rule note.
+- `tools/init.sh` `{{VERSION}}` substitution updated to 0.4.0.
+
+### Notes
+
+This release is the largest cosmetic shift since v0.1.0 (the rename touches
+~30 files) combined with the first substantive specification expansion since
+v0.2.0 (new ROP spec + snapshot-discipline pattern + tiered PHS depth).
+Backward compatibility is preserved at the protocol level: a project running
+under CogniDoc v0.3.x can upgrade to MandelDoc v0.4.0 by renaming
+`COGNIDOC.md` to `MANDELDOC.md` and applying the same name substitution
+inside that file. No protocol breakage; the changes within v0.4.0 are
+additive (new spec, new pattern, new depth matrix).
 
 ---
 

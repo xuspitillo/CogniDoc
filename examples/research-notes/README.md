@@ -1,9 +1,9 @@
-# CogniDoc Example: Autonomous Agents Research
+# MandelDoc Example: Autonomous Agents Research
 
 ## What This Is
 
-This example demonstrates CogniDoc adopted for **academic research workflow management**.
-A researcher studying "Autonomous AI Agents" uses CogniDoc to systematically track papers,
+This example demonstrates MandelDoc adopted for **academic research workflow management**.
+A researcher studying "Autonomous AI Agents" uses MandelDoc to systematically track papers,
 organize findings, synthesize knowledge across sources, and identify research gaps.
 
 ## The Researcher's Problem
@@ -11,7 +11,7 @@ organize findings, synthesize knowledge across sources, and identify research ga
 Academic research generates enormous cognitive load: dozens of papers to track, competing
 methodologies to compare, evolving terminology, and threads that branch and converge
 unpredictably. Traditional tools (spreadsheets, folders of PDFs, scattered notes) lose
-the connections between ideas. CogniDoc solves this by giving the LLM assistant a
+the connections between ideas. MandelDoc solves this by giving the LLM assistant a
 structured memory that persists across sessions.
 
 ## What This Example Demonstrates
@@ -31,7 +31,7 @@ structured memory that persists across sessions.
 
 ```
 research-notes/
-  COGNIDOC.md            -- Bootloader: research protocols and commands
+  MANDELDOC.md            -- Bootloader: research protocols and commands
   MEMORY.md              -- Project memory: state, stack, roadmap, catalog
   SIGNAL_REGISTRY.md     -- State tracking for all research threads
   missions/

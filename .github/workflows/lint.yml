@@ -1,4 +1,4 @@
-name: CogniDoc Lint
+name: MandelDoc Lint
 
 on:
   pull_request:
@@ -45,7 +45,7 @@ jobs:
       - name: Verify templates exist
         run: |
           files=(
-            "bootloader/COGNIDOC.md.template"
+            "bootloader/MANDELDOC.md.template"
             "templates/MEMORY.md.template"
             "templates/SIGNAL_REGISTRY.md.template"
             "templates/HANDSHAKES.md.template"

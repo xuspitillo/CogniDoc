@@ -6,7 +6,7 @@ The Project Handshake System (PHS) is a protocol for generating immutable, chron
 
 PHS is the project's logbook. Handshakes are generated **before every commit** and form an append-only chain. Once a handshake is generated and committed, it is never modified. Corrections, retractions, or additions are documented in the next handshake. The combination of immutability and chronological ordering creates a forensic-quality audit trail of the project's evolution.
 
-PHS is one of the four foundational protocols of CogniDoc, alongside SBS (navigation), PSS (state tracking), and CPA (operational pipeline). It ties them together: a handshake references missions (PSS), follows the CPA execution model, and is annotated with SBS beacons.
+PHS is one of the four foundational protocols of MandelDoc, alongside SBS (navigation), PSS (state tracking), and CPA (operational pipeline). It ties them together: a handshake references missions (PSS), follows the CPA execution model, and is annotated with SBS beacons.
 
 ---
 
@@ -64,6 +64,19 @@ A handshake file is composed of three **REQUIRED** sections plus seven **RECOMME
 For trivial commits (e.g., a one-line typo fix), a handshake of three sections — title and metadata, one-sentence Executive Summary, and Files Created / Modified — is sufficient and within protocol.
 
 The full template (showing all ten sections with annotations) is in `templates/handshakes/_template.md`. Adopters may delete any of the seven recommended sections from the template when not applicable.
+
+### 1.4 Tiered Depth by Commit Size
+
+The required-vs-recommended split exists to make the protocol sustainable in practice. The seed-project case study (`docs/case-studies/seed-project.md`, Friction 1) records that an "every commit gets the full audit" framing produced ~30% of commits without a full handshake despite the protocol nominally requiring 1:1. The matrix below makes the realistic expectation explicit.
+
+| Commit size | Recommended depth | Rationale |
+|---|---|---|
+| **Trivial** (typo, formatting, single-line fix; <10 lines, 1 file, no semantic change) | 3 required sections only (title, 1-sentence summary, files table) | Audit-trail entry exists. Narrative would be larger than the change. |
+| **Routine** (single feature increment, 2-5 files, no architectural decisions) | 3 required + Advances Since Last Handshake + Impact on Missions if applicable | Captures the work-mission link without inflating ceremony. |
+| **Substantive** (multi-file feature, mission completion, schema/state change) | 3 required + Advances + Decisions + Impact + Roadmap | Decisions and roadmap shifts must enter the chain at the moment they happen. |
+| **Milestone** (version release, major architectural change, security boundary change) | All 10 sections including Context for External Agents | Future readers may start from this handshake without prior context. |
+
+Adopters calibrate the matrix to their project. The principle is constant: ceremony scales with semantic impact, never with mechanical effort. A 500-line refactor that changes nothing semantically is routine. A 5-line config change that flips a security boundary is substantive.
 
 ---
 
@@ -196,7 +209,7 @@ Handshakes live in `handshakes/` at the project root, alongside `MEMORY.md`, `SI
 
 ```
 my-project/
-├── COGNIDOC.md
+├── MANDELDOC.md
 ├── MEMORY.md
 ├── SIGNAL_REGISTRY.md
 ├── HANDSHAKES.md

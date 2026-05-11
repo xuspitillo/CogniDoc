@@ -1,6 +1,6 @@
-# Contributing to CogniDoc
+# Contributing to MandelDoc
 
-Thank you for your interest in CogniDoc.
+Thank you for your interest in MandelDoc.
 
 This document describes how to contribute to the public Tier 1 (Foundation) repository.
 
@@ -8,7 +8,7 @@ This document describes how to contribute to the public Tier 1 (Foundation) repo
 
 ## Scope of contributions
 
-This repository is the **public, foundational tier** of CogniDoc. We welcome contributions in the following areas:
+This repository is the **public, foundational tier** of MandelDoc. We welcome contributions in the following areas:
 
 - **Documentation improvements:** clarifications, typo fixes, examples, translations.
 - **New reference examples:** adoption patterns for new domains (legal, healthcare, finance, education, etc.).
@@ -67,7 +67,7 @@ This adds a `Signed-off-by` line to the commit message.
 
 ## Governance
 
-CogniDoc Tier 1 is currently maintained by the project lead ([@xuspitillo](https://github.com/xuspitillo)) with assistance from contributors. Specification changes that affect the public protocol surface (SBS, PSS, CPA, CLASSIFICATION, PHS) require maintainer review to ensure backward compatibility with adopters and internal consistency. As the contributor base grows, governance will evolve toward a more distributed model documented in this section.
+MandelDoc Tier 1 is currently maintained by the project lead ([@xuspitillo](https://github.com/xuspitillo)) with assistance from contributors. Specification changes that affect the public protocol surface (SBS, PSS, CPA, CLASSIFICATION, PHS) require maintainer review to ensure backward compatibility with adopters and internal consistency. As the contributor base grows, governance will evolve toward a more distributed model documented in this section.
 
 Templates, examples, documentation, and tooling are more flexible and benefit from community contributions without spec-level review.
 

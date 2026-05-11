@@ -1,7 +1,7 @@
 # {{PROJECT_NAME}} — Project Memory v{{VERSION}}
 
-<!-- [*(COG.W1.DEF>S1)*] CogniDoc Cognitive Memory Template -->
-<!-- Generated: {{DATE}} | CogniDoc System -->
+<!-- [*(COG.W1.DEF>S1)*] MandelDoc Cognitive Memory Template -->
+<!-- Generated: {{DATE}} | MandelDoc System -->
 
 ---
 
@@ -59,7 +59,7 @@
 
 ```
 {{PROJECT_ROOT}}/
-├── COGNIDOC.md          <!-- Bootloader (auto-read by LLMs at session start) -->
+├── MANDELDOC.md          <!-- Bootloader (auto-read by LLMs at session start) -->
 ├── MEMORY.md            <!-- This file (project memory) -->
 ├── SIGNAL_REGISTRY.md   <!-- Process state tracker -->
 ├── missions/            <!-- Individual mission files -->
@@ -198,8 +198,8 @@
 <!-- Keep these counters updated on every commit. -->
 <!-- The "Handshakes" counter MUST be incremented as part of the PHS pre-commit
      cascade, before the developer commits. The PHS protocol is defined in your
-     project's bootloader (COGNIDOC.md, "Project Handshake System" section). For
-     the upstream specification, see https://github.com/xuspitillo/CogniDoc -->
+     project's bootloader (MANDELDOC.md, "Project Handshake System" section). For
+     the upstream specification, see https://github.com/xuspitillo/MandelDoc -->
 
 **{{PROJECT_NAME}}** | v{{VERSION}} | Memory updated: {{DATE}}
 Missions: 0 total (0 ROOT, 0 BRANCH, 0 SATELLITE, 0 NOTE) | Signals: 0 | Handshakes: 0 (latest: —)

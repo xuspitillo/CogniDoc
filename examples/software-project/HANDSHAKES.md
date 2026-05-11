@@ -41,4 +41,4 @@ Alphabetical ordering of files equals chronological ordering of handshakes.
 
 ## Note for the example
 
-This example ships with a single handshake (HS-001) that demonstrates the format and content expected. In a real adopted project, additional handshakes would accumulate as commits are made. See `specs/PHS-v1.0.md` in the CogniDoc repository for the full protocol.
+This example ships with a single handshake (HS-001) that demonstrates the format and content expected. In a real adopted project, additional handshakes would accumulate as commits are made. See `specs/PHS-v1.0.md` in the MandelDoc repository for the full protocol.

@@ -1,8 +1,8 @@
-# CogniDoc — Beyond Tier 1
+# MandelDoc — Beyond Tier 1
 
 ## What you have now (Tier 1: Foundation)
 
-The open-source foundation of CogniDoc. Five protocol specifications (SBS navigation, PSS state tracking, CPA operational pipeline, Mission Classification, PHS handshakes), templates, three reference examples, and lightweight shell tooling. Apache 2.0. Bring-your-own-LLM.
+The open-source foundation of MandelDoc. Five protocol specifications (SBS navigation, PSS state tracking, CPA operational pipeline, Mission Classification, PHS handshakes), templates, three reference examples, and lightweight shell tooling. Apache 2.0. Bring-your-own-LLM.
 
 **This is the only release that ships today.** Everything below is roadmap, not product.
 
@@ -10,7 +10,7 @@ The open-source foundation of CogniDoc. Five protocol specifications (SBS naviga
 
 ## Future tiers — honest status
 
-Higher tiers are in **private development**. They will turn the protocol from convention into machine-enforced infrastructure: a programmatic library that parses, validates, and propagates CogniDoc artifacts; a generator that compiles project documentation into other formats; and possibly hosted services for teams.
+Higher tiers are in **private development**. They will turn the protocol from convention into machine-enforced infrastructure: a programmatic library that parses, validates, and propagates MandelDoc artifacts; a generator that compiles project documentation into other formats; and possibly hosted services for teams.
 
 **There is currently:**
 

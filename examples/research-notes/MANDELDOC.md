@@ -1,6 +1,6 @@
-# Autonomous Agents Research -- CogniDoc Bootloader
+# Autonomous Agents Research -- MandelDoc Bootloader
 
-This project uses CogniDoc for structured research memory management.
+This project uses MandelDoc for structured research memory management.
 Any LLM assistant operating in this repository MUST follow this protocol.
 
 ---
@@ -110,7 +110,7 @@ Every request follows three phases:
 
 ```
 research-notes/
-  COGNIDOC.md            -- This file (bootloader)
+  MANDELDOC.md            -- This file (bootloader)
   MEMORY.md              -- Research memory (state, stack, roadmap, catalog)
   SIGNAL_REGISTRY.md     -- Signal registry (thread states)
   missions/              -- Individual research thread files

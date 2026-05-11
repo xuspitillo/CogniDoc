@@ -1,4 +1,4 @@
-# My Knowledge Garden -- CogniDoc Bootloader
+# My Knowledge Garden -- MandelDoc Bootloader
 
 This project uses a cognitive documentation system for personal knowledge management.
 Any LLM operating in this repository MUST follow this protocol.
@@ -91,7 +91,7 @@ is the default.
 
 ```
 my-knowledge-garden/
-├── COGNIDOC.md            <-- This file (bootloader)
+├── MANDELDOC.md            <-- This file (bootloader)
 ├── MEMORY.md              <-- Project memory (identity, state, catalog)
 ├── SIGNAL_REGISTRY.md     <-- State tracking for missions and threads
 └── missions/              <-- Individual mission files
