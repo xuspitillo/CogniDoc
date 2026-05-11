@@ -8,7 +8,7 @@
 > historical record. The protocols, templates, and findings are identical
 > under either name — only the label changed. See `CHANGELOG.md` v0.4.0 for
 > details.
-
+>
 > **Status:** Retrospective case study, written 2026-05-10 against
 > CogniDoc v0.3.0. Documents adoption that took place during
 > 2026-02-14 to 2026-03-22 (33 days of intensive use).

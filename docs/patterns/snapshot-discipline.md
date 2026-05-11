@@ -85,7 +85,7 @@ The snapshot date and the entry date are usually the same; when they differ (e.g
 
 ## Interaction with ROP
 
-The Record of Propagation (`specs/ROP-v1.0.md`) lists each tracked metric's authoritative source and propagation targets. **Historical snapshot entries are NOT propagation targets.** A propagation walk that touches every target updating "304 endpoints" must skip log entries tagged `(snapshot ...)`. Conversely, a `grep` audit for the current value can exclude all matches inside lines containing `(snapshot ` to reduce false positives.
+The Record of Propagation (`specs/ROP-v1.0.md`) lists each tracked metric's authoritative source and propagation targets. **Historical snapshot entries are NOT propagation targets.** A propagation walk that touches every target updating "304 endpoints" must skip log entries tagged `(snapshot ...)`. Conversely, a `grep` audit for the current value can exclude all matches inside lines containing the substring `(snapshot` to reduce false positives.
 
 If a propagation target is mistakenly tagged as a snapshot, the value silently drifts away from the authoritative source. If a snapshot is mistakenly treated as a propagation target, history is rewritten — a worse violation, because the audit trail loses fidelity.
 
