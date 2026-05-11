@@ -2,7 +2,7 @@
 
 ## Abstract
 
-CPA is the default operational protocol for every LLM request in a CogniDoc-managed project. It ensures precision, efficiency, and zero errors from context overflow by routing every task through three mandatory phases: Consultation, Planning, and Autonomous Execution. The pipeline activates automatically on every request — the user never needs to invoke it.
+CPA is the default operational protocol for every LLM request in a MandelDoc-managed project. It ensures precision, efficiency, and zero errors from context overflow by routing every task through three mandatory phases: Consultation, Planning, and Autonomous Execution. The pipeline activates automatically on every request — the user never needs to invoke it.
 
 ---
 

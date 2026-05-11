@@ -1,12 +1,12 @@
-# CogniDoc --- Glossary
+# MandelDoc --- Glossary
 
-This glossary defines the key terms used across CogniDoc documentation, specifications, and templates.
+This glossary defines the key terms used across MandelDoc documentation, specifications, and templates.
 
 ## Beacon
 An inline semantic tag embedded in documentation. Format: `[*(DOM.W.ROL>DEST)*]`. Enables LLMs to navigate by importance, domain, and role without reading entire documents. See `specs/SBS-v1.0.md`.
 
 ## Bootloader
-The `COGNIDOC.md` protocol file at the root of a CogniDoc-managed project. Read by the LLM at session start. Defines how to navigate, update, and operate on the project's memory and documentation.
+The `MANDELDOC.md` protocol file at the root of a MandelDoc-managed project. Read by the LLM at session start. Defines how to navigate, update, and operate on the project's memory and documentation.
 
 ## Branch (mission type)
 A child sub-mission of another mission. Shares scope with its parent. Lives inside the parent mission's folder.
@@ -33,7 +33,7 @@ The handshake index file at the project root. Mirrors the role of `SIGNAL_REGIST
 A handshake identifier. `HS` is the literal uppercase prefix; `NNN` is a sequential, zero-padded three-digit counter that is never reused. Filenames use the lowercase form: `hs-NNN-YYYY-MM-DD-slug.md`.
 
 ## PHS
-Project Handshake System. The protocol governing handshake generation: format, immutability, pre-commit trigger, propagation cascade, chain continuity. One of the four foundational CogniDoc protocols (alongside SBS, PSS, CPA). See `specs/PHS-v1.0.md`.
+Project Handshake System. The protocol governing handshake generation: format, immutability, pre-commit trigger, propagation cascade, chain continuity. One of the four foundational MandelDoc protocols (alongside SBS, PSS, CPA). See `specs/PHS-v1.0.md`.
 
 ## MEMORY.md
 The project's general memory file. Contains 10 sections covering identity, stack, architecture, current state, history, decisions, lessons learned, roadmap (P1-P2), and catalog (all missions).

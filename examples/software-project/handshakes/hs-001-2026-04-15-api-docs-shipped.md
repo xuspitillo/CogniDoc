@@ -104,13 +104,13 @@ This is HS-001; there is no prior handshake. The narrative below describes what 
 
 ## Context for External Agents
 
-TaskFlow API is a RESTful task-management backend built with FastAPI 0.115, PostgreSQL 16, and Redis 7.2. Tests run via pytest with httpx. The team is 3 engineers. Development follows a mission-based workflow tracked through CogniDoc cognitive memory.
+TaskFlow API is a RESTful task-management backend built with FastAPI 0.115, PostgreSQL 16, and Redis 7.2. Tests run via pytest with httpx. The team is 3 engineers. Development follows a mission-based workflow tracked through MandelDoc cognitive memory.
 
 Current state at HS-001: v0.3.0, 12 endpoints all documented (Redoc at `/docs`), 45 passing tests, 82% coverage. Active focus is the JWT authentication system (MIS-001, P1, ROOT) currently in Phase 1 (user model). Notifications (MIS-002) are blocked on auth. API docs (MIS-003) were just completed. Rate limiting (MIS-004) is paused.
 
 Files of interest for an external agent picking up the project:
 
-- `COGNIDOC.md` — operational protocol and session commands.
+- `MANDELDOC.md` — operational protocol and session commands.
 - `MEMORY.md` — full project state, stack, roadmap, catalog.
 - `SIGNAL_REGISTRY.md` — current state of every mission.
 - `HANDSHAKES.md` — chronological backbone (this handshake is currently the only entry).

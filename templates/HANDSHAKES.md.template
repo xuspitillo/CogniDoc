@@ -55,7 +55,7 @@ Alphabetical ordering of files equals chronological ordering of handshakes.
 
 1. **Immutable.** Once committed, a handshake file is never modified. Corrections go into the next handshake.
 2. **Continuous.** The set HS-001..HS-N has no gaps.
-3. **Pre-commit generation.** A handshake is generated BEFORE every commit that changes project content. The protocol is defined in your project's bootloader (COGNIDOC.md, "Project Handshake System" section); upstream specification: https://github.com/xuspitillo/CogniDoc/blob/main/specs/PHS-v1.0.md
+3. **Pre-commit generation.** A handshake is generated BEFORE every commit that changes project content. The protocol is defined in your project's bootloader (MANDELDOC.md, "Project Handshake System" section); upstream specification: https://github.com/xuspitillo/MandelDoc/blob/main/specs/PHS-v1.0.md
 4. **Atomic propagation.** Generating handshake HS-NNN updates this index AND `MEMORY.md` footer counter BEFORE the commit. The developer commits only after the agent confirms the propagation is complete.
 
 ---

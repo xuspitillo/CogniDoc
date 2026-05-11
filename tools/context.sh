@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# CogniDoc Context Bundler
-# Concatenates all CogniDoc files into a single markdown block suitable for
+# MandelDoc Context Bundler
+# Concatenates all MandelDoc files into a single markdown block suitable for
 # pasting into any LLM (ChatGPT, Gemini, Claude web, Ollama, LM Studio, etc.)
 #
 # Usage:
@@ -25,12 +25,12 @@ set -euo pipefail
 
 usage() {
     cat <<'USAGE'
-CogniDoc Context Bundler — Bundle cognitive docs into a single LLM-ready block.
+MandelDoc Context Bundler — Bundle cognitive docs into a single LLM-ready block.
 
 Usage: context.sh <project-dir> [options]
 
 Arguments:
-  project-dir         Path to the project initialized with CogniDoc
+  project-dir         Path to the project initialized with MandelDoc
 
 Options:
   -o, --output FILE   Write output to FILE instead of stdout
@@ -108,16 +108,16 @@ PROJECT_DIR="$(cd "$PROJECT_DIR" 2>/dev/null && pwd)" || {
     exit 1
 }
 
-# --- Locate CogniDoc files ---
+# --- Locate MandelDoc files ---
 
 BOOTLOADER=""
-if [[ -f "$PROJECT_DIR/COGNIDOC.md" ]]; then
-    BOOTLOADER="$PROJECT_DIR/COGNIDOC.md"
+if [[ -f "$PROJECT_DIR/MANDELDOC.md" ]]; then
+    BOOTLOADER="$PROJECT_DIR/MANDELDOC.md"
 elif [[ -f "$PROJECT_DIR/CLAUDE.md" ]]; then
     # Support Claude Code integration (auto-reads CLAUDE.md)
     BOOTLOADER="$PROJECT_DIR/CLAUDE.md"
 else
-    echo "ERROR: No bootloader found. Expected COGNIDOC.md in $PROJECT_DIR" >&2
+    echo "ERROR: No bootloader found. Expected MANDELDOC.md in $PROJECT_DIR" >&2
     exit 1
 fi
 
@@ -132,7 +132,7 @@ HANDSHAKES_DIR="$PROJECT_DIR/handshakes"
 generate() {
     # Header instruction
     cat <<'HEADER'
-# CogniDoc — Cognitive Documentation Context
+# MandelDoc — Cognitive Documentation Context
 
 You are an LLM assistant working on this project. The following is your
 cognitive documentation system. Read it, internalize the protocols, and
@@ -153,7 +153,7 @@ Each section is delimited with clear markers. Process them in order.
 HEADER
 
     # Section 1: Bootloader
-    echo "<!-- ====== SECTION 1: BOOTLOADER (COGNIDOC.md) ====== -->"
+    echo "<!-- ====== SECTION 1: BOOTLOADER (MANDELDOC.md) ====== -->"
     echo ""
     if [[ -f "$BOOTLOADER" ]]; then
         cat "$BOOTLOADER"
@@ -279,7 +279,7 @@ HEADER
     cat <<'FOOTER'
 ---
 
-<!-- End of CogniDoc context. You now have the full cognitive state of this
+<!-- End of MandelDoc context. You now have the full cognitive state of this
      project. Follow the bootloader protocol for all operations. -->
 FOOTER
 }

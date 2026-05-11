@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# CogniDoc Beacon Validator (Tier 1 — basic syntax validation)
+# MandelDoc Beacon Validator (Tier 1 — basic syntax validation)
 # Usage: ./validate-beacons.sh <directory-or-file> [--strict]
 # Example: ./validate-beacons.sh ~/my-project
-# Example: ./validate-beacons.sh ~/my-project/COGNIDOC.md --strict
+# Example: ./validate-beacons.sh ~/my-project/MANDELDOC.md --strict
 #
 # Behavior:
 # - Validates SBS beacon syntax in markdown files
@@ -37,7 +37,7 @@ STRICT="${2:-}"
 
 VALID_ROLES="DEF|DEC|DEP|REF|HIT|PAT|RIS|EVL|SIG"
 
-echo "=== CogniDoc Beacon Validator ==="
+echo "=== MandelDoc Beacon Validator ==="
 echo "Target: $TARGET"
 echo ""
 

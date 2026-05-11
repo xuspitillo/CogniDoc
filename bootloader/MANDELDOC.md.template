@@ -1,10 +1,18 @@
-# {{PROJECT_NAME}} — CogniDoc Cognitive Protocol
+# {{PROJECT_NAME}} — MandelDoc Cognitive Protocol
 
 This file is the **bootloader** of your project's cognitive documentation system.
 Every LLM session begins by reading this file. It defines how the LLM navigates,
 updates, and verifies your project's living memory.
 
-**Powered by CogniDoc v0.3.1** — https://github.com/{{ORG}}/cognidoc
+**Powered by MandelDoc v0.4.0** — https://github.com/{{ORG}}/mandeldoc
+
+> **Bootloader leanness rule (hard).** This file is read on every session start.
+> Its target ceiling is **500 lines**. Detailed protocol content lives in `specs/`
+> (SBS, PSS, CPA, CLASSIFICATION, PHS, ROP) and is read on demand, not on every
+> session. If a future edit would push this file past 500 lines, move the new
+> content into a spec file and cite the spec here in two lines maximum. The
+> seed-project case study (`docs/case-studies/seed-project.md`, Friction 3)
+> documents the failure mode this rule prevents.
 
 ---
 
@@ -350,7 +358,7 @@ when it is safe to commit.
 
 ```
 {{PROJECT_ROOT}}/
-├── COGNIDOC.md                    <- This file (protocol — auto-read by LLM)
+├── MANDELDOC.md                    <- This file (protocol — auto-read by LLM)
 ├── MEMORY.md                      <- General project memory
 ├── SIGNAL_REGISTRY.md             <- Signal registry (process states)
 ├── HANDSHAKES.md                  <- Handshake index (chronological checkpoints)

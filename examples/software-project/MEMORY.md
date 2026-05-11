@@ -12,7 +12,7 @@ priorities and deadlines, and tracking completion. Designed for small-to-medium 
 who need a reliable, self-hosted alternative to SaaS task tools.
 
 The project is maintained by a 3-person engineering team. Development follows a
-mission-based workflow tracked through CogniDoc cognitive memory.
+mission-based workflow tracked through MandelDoc cognitive memory.
 
 ---
 

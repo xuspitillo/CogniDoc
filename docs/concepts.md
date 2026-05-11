@@ -1,4 +1,4 @@
-# CogniDoc -- Core Concepts
+# MandelDoc -- Core Concepts
 
 ## Why cognitive documentation?
 
@@ -8,7 +8,7 @@ The shift: documentation is no longer a byproduct of work. It IS the operating l
 
 ## The bootloader
 
-The COGNIDOC.md file is the entry point. Every LLM session begins by reading it. It defines:
+The MANDELDOC.md file is the entry point. Every LLM session begins by reading it. It defines:
 
 - How to navigate the project (SBS beacons)
 - How to update memory (update methodology)
@@ -49,14 +49,14 @@ LLMs use beacons to jump directly to relevant content without reading entire doc
 
 ### Why inline beacons and not YAML frontmatter
 
-A reasonable alternative is YAML frontmatter at the top of each file (e.g., `---\ndomain: ARC\nweight: W1\nrole: DEF\ndestination: S3\n---`). The trade-offs that pushed CogniDoc toward inline beacons:
+A reasonable alternative is YAML frontmatter at the top of each file (e.g., `---\ndomain: ARC\nweight: W1\nrole: DEF\ndestination: S3\n---`). The trade-offs that pushed MandelDoc toward inline beacons:
 
 - **Granularity.** YAML frontmatter applies to a whole file. Beacons are inline and apply to a specific paragraph, table row, or section. A single mission file can carry dozens of beacons annotating dozens of distinct decisions, definitions, risks, and references. Frontmatter cannot do that without nesting structure that is harder to read than the prose it would annotate.
 - **Survival under markdown rendering.** YAML frontmatter is consumed by some markdown renderers and disappears from the rendered HTML. Beacons render as visible text (or are gracefully ignored), so a human or LLM reading the rendered version still sees them.
 - **Composition with prose.** Beacons sit inside the sentence they annotate, so the LLM (or human) reads beacon-and-content together. With frontmatter, you either jump to the top of the file to learn the metadata or you do not see it at all when reading a paragraph in the middle.
 - **Pack semantics.** Beacons can be packed (`[*(SEC.W1.DEC>S2 | ARC.W2.DEP>MIS-004)*]`) to express that a single paragraph carries simultaneous meaning across multiple domains. YAML frontmatter has no compact equivalent.
 
-The cost is real: beacons are noisier than YAML in plain text, and the syntax `[*(...)*]` is project-specific rather than a widely-known standard. CogniDoc accepts that cost in exchange for granular, inline, render-surviving navigation. For a project where the alternative — file-level metadata — is enough, plain YAML frontmatter is a perfectly valid choice and CogniDoc is overkill.
+The cost is real: beacons are noisier than YAML in plain text, and the syntax `[*(...)*]` is project-specific rather than a widely-known standard. MandelDoc accepts that cost in exchange for granular, inline, render-surviving navigation. For a project where the alternative — file-level metadata — is enough, plain YAML frontmatter is a perfectly valid choice and MandelDoc is overkill.
 
 ## The CPA pipeline
 
@@ -79,7 +79,7 @@ These axes are independent. A SATELLITE can be P1. A ROOT can be P5. This preven
 
 ## The coherence guarantee
 
-CogniDoc's most distinctive property: the system is designed so that documentation and reality cannot diverge silently. The protocols enforce:
+MandelDoc's most distinctive property: the system is designed so that documentation and reality cannot diverge silently. The protocols enforce:
 
 - Updates to mission files when work advances
 - Updates to MEMORY.md when milestones are reached
@@ -93,7 +93,7 @@ Higher tiers add programmatic validation (parsers, validators, CI/CD integration
 
 | Term | Meaning |
 |------|---------|
-| Bootloader | The COGNIDOC.md protocol file that initializes LLM awareness |
+| Bootloader | The MANDELDOC.md protocol file that initializes LLM awareness |
 | Beacon | Inline semantic tag for cognitive navigation |
 | Mission | A tracked unit of work with its own memory file |
 | Signal | A state transition event in the PSS |
@@ -103,9 +103,9 @@ Higher tiers add programmatic validation (parsers, validators, CI/CD integration
 | PHS | Project Handshake System -- chronological narrative checkpoints |
 | SBS | Semantic Beacon System -- navigation |
 
-## What CogniDoc is NOT
+## What MandelDoc is NOT
 
 - It is NOT a database. It is markdown files with protocols.
 - It is NOT an agent framework. It organizes the project; agents operate on it.
-- It is NOT a RAG system. RAG retrieves; CogniDoc structures, navigates, and maintains.
+- It is NOT a RAG system. RAG retrieves; MandelDoc structures, navigates, and maintains.
 - It is NOT tied to any specific LLM. Any model that reads markdown can use it.

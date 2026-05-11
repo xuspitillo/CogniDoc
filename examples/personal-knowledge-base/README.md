@@ -1,6 +1,6 @@
-# Personal Knowledge Base -- CogniDoc Example
+# Personal Knowledge Base -- MandelDoc Example
 
-This example demonstrates CogniDoc adopted for a **personal knowledge management system**
+This example demonstrates MandelDoc adopted for a **personal knowledge management system**
 called "My Knowledge Garden." It shows how a single person can use cognitive documentation
 to capture, organize, and synthesize knowledge from books, articles, papers, and conferences.
 
@@ -19,7 +19,7 @@ to capture, organize, and synthesize knowledge from books, articles, papers, and
 
 | File | Purpose |
 |------|---------|
-| `COGNIDOC.md` | Bootloader -- session protocol, domains, commands, principles |
+| `MANDELDOC.md` | Bootloader -- session protocol, domains, commands, principles |
 | `MEMORY.md` | Project memory -- identity, state, roadmap, catalog |
 | `SIGNAL_REGISTRY.md` | State tracking for missions and research threads |
 | `missions/mis-001-reading-backlog.md` | Example mission: organizing a reading backlog |
@@ -29,8 +29,8 @@ to capture, organize, and synthesize knowledge from books, articles, papers, and
 ## How to try it
 
 1. Copy this directory into your own repository.
-2. Adjust `COGNIDOC.md` to match your knowledge domains and reading habits.
-3. Open a conversation with any LLM that reads `COGNIDOC.md` on startup.
+2. Adjust `MANDELDOC.md` to match your knowledge domains and reading habits.
+3. Open a conversation with any LLM that reads `MANDELDOC.md` on startup.
 4. Say `"access memory"` to load context, then start working.
 
 ## Who is this for

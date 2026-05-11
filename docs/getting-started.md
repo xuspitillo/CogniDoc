@@ -1,4 +1,4 @@
-# Getting Started with CogniDoc
+# Getting Started with MandelDoc
 
 ## Prerequisites
 
@@ -11,20 +11,20 @@
 ### Option A: Using the init script
 
 ```bash
-git clone https://github.com/xuspitillo/CogniDoc.git /tmp/cognidoc
-/tmp/cognidoc/tools/init.sh ~/my-project "My Project"
+git clone https://github.com/xuspitillo/MandelDoc.git /tmp/mandeldoc
+/tmp/mandeldoc/tools/init.sh ~/my-project "My Project"
 ```
 
 The script **creates the target directory if it does not exist**. You do not need to
 `mkdir` or `cd` into it beforehand — pass any path you want as the first argument and
 the script handles the rest. After the script finishes, you can `cd` into that
-directory to continue. The script copies templates, generates `COGNIDOC.md`,
+directory to continue. The script copies templates, generates `MANDELDOC.md`,
 `MEMORY.md`, `SIGNAL_REGISTRY.md`, `HANDSHAKES.md`, and the `missions/` and
 `handshakes/` skeletons, and replaces common placeholders automatically.
 
 ### Option B: Manual setup
 
-1. Copy `bootloader/COGNIDOC.md.template` to your project root as `COGNIDOC.md`
+1. Copy `bootloader/MANDELDOC.md.template` to your project root as `MANDELDOC.md`
 2. Copy `templates/MEMORY.md.template` as `MEMORY.md`
 3. Copy `templates/SIGNAL_REGISTRY.md.template` as `SIGNAL_REGISTRY.md`
 4. Copy `templates/HANDSHAKES.md.template` as `HANDSHAKES.md`
@@ -33,7 +33,7 @@ directory to continue. The script copies templates, generates `COGNIDOC.md`,
 
 ## Step 2 --- Customize the bootloader (2 minutes)
 
-Open `COGNIDOC.md`. Replace:
+Open `MANDELDOC.md`. Replace:
 
 - `{{PROJECT_NAME}}` with your project name
 - `{{ORG}}` with your GitHub org or username
@@ -53,19 +53,19 @@ Open `MEMORY.md`. Fill in:
 
 ## Step 4 --- Start a session with your LLM
 
-How you load CogniDoc depends on your LLM type:
+How you load MandelDoc depends on your LLM type:
 
 ### Code-integrated LLMs (Claude Code, Cursor, Windsurf, Cline, Aider)
 
-These tools auto-read a markdown file from your project root at session start. Make sure CogniDoc's bootloader has the name your tool expects:
+These tools auto-read a markdown file from your project root at session start. Make sure MandelDoc's bootloader has the name your tool expects:
 
 | Tool | Expected filename | What to do |
 |------|-------------------|------------|
-| Claude Code | `CLAUDE.md` | Create a symlink: `ln -s COGNIDOC.md CLAUDE.md` — Claude Code auto-reads files named `CLAUDE.md` |
-| Cursor | `.cursorrules` or project docs | Copy `COGNIDOC.md` content into your Cursor rules, or add it via Cursor's project docs feature |
-| Windsurf | `.windsurfrules` | Copy `COGNIDOC.md` content into `.windsurfrules` |
-| Cline | Auto-reads project files | Ensure `COGNIDOC.md` is in the project root; Cline will find it when prompted |
-| Aider | Convention files or `--read` flag | Run: `aider --read COGNIDOC.md` |
+| Claude Code | `CLAUDE.md` | Create a symlink: `ln -s MANDELDOC.md CLAUDE.md` — Claude Code auto-reads files named `CLAUDE.md` |
+| Cursor | `.cursorrules` or project docs | Copy `MANDELDOC.md` content into your Cursor rules, or add it via Cursor's project docs feature |
+| Windsurf | `.windsurfrules` | Copy `MANDELDOC.md` content into `.windsurfrules` |
+| Cline | Auto-reads project files | Ensure `MANDELDOC.md` is in the project root; Cline will find it when prompted |
+| Aider | Convention files or `--read` flag | Run: `aider --read MANDELDOC.md` |
 
 Once loaded, the LLM reads your project files directly and follows the protocol automatically. No extra steps needed.
 
@@ -105,9 +105,9 @@ Pipe the context directly or use it as system prompt:
 ./tools/context.sh ~/my-project -o context.txt
 ```
 
-If your local model interface supports a system prompt file, point it at `COGNIDOC.md` directly or at the generated `context.txt` for the full bundle.
+If your local model interface supports a system prompt file, point it at `MANDELDOC.md` directly or at the generated `context.txt` for the full bundle.
 
-Note: CogniDoc works best with models that have large context windows (32k tokens or more). Smaller context models may need the `--no-missions` flag to fit.
+Note: MandelDoc works best with models that have large context windows (32k tokens or more). Smaller context models may need the `--no-missions` flag to fit.
 
 ### API usage (OpenAI API, Anthropic API, Google AI, local APIs)
 
@@ -159,15 +159,15 @@ In all cases, the LLM:
 ## What's next?
 
 - Read [docs/concepts.md](concepts.md) to understand the cognitive documentation model
-- Explore [examples/](../examples/) to see CogniDoc applied to different project types
+- Explore [examples/](../examples/) to see MandelDoc applied to different project types
 - Check [docs/upgrade-path.md](upgrade-path.md) to learn about advanced features in higher tiers
 
 ## Troubleshooting
 
 ### "My LLM doesn't seem to follow the protocol"
 
-- Ensure the full `COGNIDOC.md` content is in the LLM's context window (not truncated).
-- Some LLMs need an explicit nudge: "Read and follow the protocol in COGNIDOC.md."
+- Ensure the full `MANDELDOC.md` content is in the LLM's context window (not truncated).
+- Some LLMs need an explicit nudge: "Read and follow the protocol in MANDELDOC.md."
 - Longer context windows produce better adherence. GPT-4, Claude, and Gemini Pro work well.
 
 ### "The memory files are getting large"
@@ -179,11 +179,11 @@ In all cases, the LLM:
 ### "My LLM says it can't access files"
 
 - Chat-based LLMs (ChatGPT, Gemini) cannot read your filesystem directly.
-- Use `tools/context.sh` to bundle all CogniDoc files into a single block you can paste or upload.
+- Use `tools/context.sh` to bundle all MandelDoc files into a single block you can paste or upload.
 - When the LLM suggests file updates, apply them manually. The cognitive protocol still works --- you handle the writes.
 
 ### "I want to use this with a team"
 
-- CogniDoc works with git. Multiple team members and LLMs can contribute to the same memory.
+- MandelDoc works with git. Multiple team members and LLMs can contribute to the same memory.
 - Merge conflicts in MEMORY.md are resolved by keeping the more recent state.
 - Each team member's LLM reads the same bootloader and follows the same protocol.
